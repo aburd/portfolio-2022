@@ -1,0 +1,22 @@
+job_experience:
+  - company_name: サーブコープジャパン株式会社
+    date_start: 2015年05月
+    date_end: 2017年06月
+    employment_type: 正社員
+    description: | 
+       
+  - company_name: Mickey Kids
+    date_start: 2016年06月 
+    date_end: 2016年08月
+    employment_type: 正社員
+    description: 
+  - company_name: Present Day Technology
+    date_start: 2017年02月
+    date_end: 2019年06月
+    employment_type: 契約社員
+    description: 
+  - company_name: ZEALS株式会社
+    date_start: 2017年07月 
+    date_end: ~ 
+    employment_type: 正社員
+    description: 

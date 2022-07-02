@@ -1,6 +1,77 @@
-(ns portfolio-2022.core)
+(ns portfolio-2022.core
+  (:require [ring.adapter.jetty :as jetty]
+            [ring.middleware.resource :refer [wrap-resource]]
+            [ring.middleware.params :refer [wrap-params]]
+            [ring.middleware.reload :refer [wrap-reload]]
+            [ring.middleware.refresh :refer [wrap-refresh]]
+            [ring.middleware.keyword-params :refer [wrap-keyword-params]]
+            [reitit.ring :refer [ring-handler router]]
+            [clojure.edn :as edn]
+            [taoensso.tower.ring :refer [wrap-tower]] 
+            [clojure.java.io :as io]
+            [clojure.pprint :refer [pprint]]
+            [portfolio-2022.handlers.core :as handlers])
+  (:gen-class))
 
-(defn foo
-  "I don't do a whole lot."
-  [x]
-  (println x "Hello, World!"))
+(defonce server (atom nil))
+
+(def tower-config (edn/read-string (slurp (io/resource "tower-config.edn"))))
+
+(def routes
+  (some-fn
+    (ring-handler
+      (router 
+        [
+         ["/" {:get {:handler handlers/home}}]
+         ["/echo"
+           {:get {:handler (fn [req] 
+                             {:status 200
+                              :headers {"Content-Type" "text/plain"}
+                              :body (with-out-str (pprint req))})}}]]))
+    (constantly {:status 404
+                 :headers {"Content-Type" "text/plain"}
+                 :body "Not found"})))
+
+(defn basic-app [handler]
+  (-> handler
+      (wrap-tower tower-config)
+      (wrap-resource "public")
+      wrap-keyword-params
+      wrap-params))
+
+(defn reload-app [handler]
+  (-> handler
+      wrap-refresh
+      wrap-reload))
+
+(def app (-> routes
+             basic-app))
+
+(defn start-server 
+  ([port dev-mode]
+   (reset! server 
+           (jetty/run-jetty (if (true? dev-mode) 
+                              (reload-app #'app)
+                              #'app) 
+                          {:port port
+                           :join? false}))) 
+  ([port]
+   (reset! server 
+           (jetty/run-jetty #'app 
+                          {:port port
+                           :join? false})))) 
+
+(defn stop-server []
+  (when-some [s @server]
+    (.stop s)
+    (reset! server nil)))
+
+(defn reset-server [port]
+  (when-some [s @server]
+      (stop-server))
+  (start-server port))
+
+(defn -main
+  "Run the portfolio 2022 web server"
+  [& args]
+  (start-server 3001))

@@ -1,0 +1,27 @@
+{:dictionary ; Map or named resource containing map
+   {:en   {:example {:foo         ":en :example/foo text"
+                     :foo_comment "Hello translator, please do x"
+                     :bar {:baz ":en :example.bar/baz text"}
+                     :greeting "Hello %s, how are you?"
+                     :inline-markdown "<tag>**strong**</tag>"
+                     :block-markdown* "<tag>**strong**</tag>"
+                     :with-exclaim!   "<tag>**strong**</tag>"
+                     :with-arguments  "Num %d = %s"
+                     :greeting-alias :example/greeting
+                     :baz-alias      :example.bar/baz}
+           :greeting "Hello %s, how are you?"
+           :ui {:submit "submit"
+                :nav {:home "home"
+                      :works "work history"
+                      :terminal "terminal"
+                      :contact "contact"}}
+           :missing  "|Missing translation: [%1$s %2$s %3$s]|"}
+    :ja {:greeting "こんにちは%s様！"
+         :ui {:submit "送信"
+              :nav {:home "ホーム"
+                    :works "履歴"
+                    :terminal "ターミナル"
+                    :contact "連絡"}}
+         :missing  "訳がありません: [%1$s %2$s %3$s]|"}}
+ :dev-mode? true ; Set to true for auto dictionary reloading
+ :fallback-locale :en}
