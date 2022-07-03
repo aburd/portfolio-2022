@@ -9,14 +9,34 @@
                      :with-arguments  "Num %d = %s"
                      :greeting-alias :example/greeting
                      :baz-alias      :example.bar/baz}
-           :greeting "Hello %s, how are you?"
+           :greeting "Ahoyhoy!"
+           :my-name "Aaron Burdick"
+           :work-title "Software Engineer" 
+           :about-me* "I've been programming since I was in middle school making games and such. In high-school, I started getting into the web. I helped my brother with his blog and a few local band's websites. In college, I mainly focused on studying Japanese and music, but returned to programming for the web around 2013.
+                     
+Since then, I've made websites for many client's, worked on multiple webapps for other teams and worked on my own webapps. Because I'm primarily self-taught, or have been in a lot of situations where I've had to learn something to progress a project forward, I have a lot of experience doing things myself and therefore a decent amount of experience in most layers of the web stack. 
+                     
+Currently, I am employed at Zeals Co. Ltd where I've worked as a frontend engineer, full-stack engineer, tech-lead and now a VP. Although I recognize the importance of management, I would say I'm an engineer at heart. I just like making things. On the side, I'm also currently working on [hangzone](https://github.com/hangforever), an app that allows people to meet others in public places around Tokyo."
+           :about-website* "The purpose of this website is to introduce others to me and hopefully serve as a reflection of how I approach things. This website's primary goal is to please you, the user. Therefore, it's optimized to load fast. It uses javascript only where it is absolutely necessary to enhance your experience. Were there no dynamic information, I would have just served up static HTML pages, but since I live in Japan, there is some possibility you would rather read this page in Japanese, which is offered if your browser settings are set to Japanese.
+                           
+Although this website was made over a weekend, my approach was to try and value your time hopefully as much as you do. Hopefully you can see this website even when your have a terrible connection, or are viewing this on a screen-reader.
+                           
+That is not to say I don't enjoy the million lines of Javascript SPA or the ultra-modern server-side-rendered, hydrated, code-split, Typescript masterpiece. I do think those have a place on the web (who doesn't want to do modern photo-editing in the browser?). Is just that I really do believe in simplicity and using the right tool for the job."
            :ui {:submit "submit"
                 :nav {:home "home"
                       :works "work history"
                       :terminal "terminal"
                       :contact "contact"}}
            :missing  "|Missing translation: [%1$s %2$s %3$s]|"}
-    :ja {:greeting "こんにちは%s様！"
+    :ja {:greeting "こんにちは！"
+         :my-name "バーディク　アーロン"
+         :work-title "ソフトウエアエンジニア"
+         :about-me* "中学生の頃からゲームなどを作ってプログラミングをしています。高校生の頃、私はウェブを始めました。私は兄のブログといくつかの地元のバンドのウェブサイトで兄を助けました。大学では主に日本語と音楽の勉強に専念していましたが、2013年頃にウェブのプログラミングに戻りました。
+                     
+それ以来、私は多くのクライアントのためにWebサイトを作成し、他のチームのために複数のWebアプリに取り組み、自分のWebアプリに取り組みました。私は主に独学であるか、プロジェクトを進めるために何かを学ばなければならない多くの状況にあったので、私は自分で物事を行う多くの経験があり、したがってほとんどの層でかなりの量の経験がありますWebスタックの。
+                     
+現在、私はZeals Co. Ltdに勤務しており、フロントエンドエンジニア、フルスタックエンジニア、技術リーダー、そして現在はVPとして働いています。私は経営の重要性を認識していますが、私は本質的にエンジニアだと思います。私は物を作るのが好きです。一方で、現在、東京近郊の公共の場所で人と出会えるアプリ[hangzone](https://github.com/hangforever)にも取り組んでいます。"
+         :about-website* ""
          :ui {:submit "送信"
               :nav {:home "ホーム"
                     :works "履歴"

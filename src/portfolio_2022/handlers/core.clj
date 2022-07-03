@@ -8,7 +8,9 @@
   (html [:html
          [:head
           [:meta {:name "viewport" :content "width: device-width, initial-scale: 1.0"}]]
-         [:body inner-html]]))
+         [:link {:rel "stylesheet" :href "/styles.css"}] 
+         [:body inner-html]
+         [:script {:src "/js/main.js"}]]))
 
 (defn html-200 
   "Returns a function which will return a valid html ring response."
@@ -28,6 +30,13 @@
       [:li
        [:a {:href (:url option)} (s/capitalize (:text option))]])]])
 
+(defn switch
+  "Makes a toggle switch"
+  []
+  [:label {:class "switch"}
+   [:input {:type "checkbox"}]
+   [:span {:class "slider round"}]])
+
 (defn social
   "Returns social icons"
   []
@@ -38,7 +47,9 @@
       [:img {:src "/github.png"}]]]
     [:li 
      [:a {:href "mailto:aaron.burdick@protonmail.com"}
-      [:img {:src "/email.png"}]]]]])
+      [:img {:src "/email.png"}]]]
+    [:li
+      [:div {:class "container-themes"} (switch)]]]])
 
 (defn page-wrapper 
   [req html-fn]

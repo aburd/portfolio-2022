@@ -2,5 +2,9 @@
   (:require [hiccup.core :refer [html]]))
 
 (defn handler [req] 
-  (let [u (or (-> req :params :user) "my guy")]
-    [:h1 ((:t' req) :greeting u)]))
+  [:div {:class "page-home"} 
+   [:h1 {:class "page-tag-line"} ((:t' req) :my-name)]
+   [:h2 {:class "page-sub-tag-line"} ((:t' req) :work-title)]
+   [:div {:class "page-cover"} [:img {:src "/myself.jpeg"}]]
+   [:p {:class "page-body-text"} ((:t' req) :about-me)]])
+    

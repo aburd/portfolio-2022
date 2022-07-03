@@ -1,0 +1,15 @@
+;; shadow-cljs configuration
+{:source-paths
+ ["src/dev"
+  "src/js"]
+
+ :dependencies
+ []
+
+ :dev-http {}
+ :builds
+ {:frontend
+  {:target :browser
+   :output-dir "resources/public/js"
+   :modules {:main {:init-fn portfolio-2022.fe.core/init}}}}}
+   
