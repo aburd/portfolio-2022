@@ -1,12 +1,10 @@
 ;; shadow-cljs configuration
 {:source-paths
- ["src/dev"
-  "src/js"]
+ ["src"]
 
  :dependencies
  []
 
- :dev-http {}
  :builds
  {:frontend
   {:target :browser

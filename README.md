@@ -1,10 +1,14 @@
 # portfolio-2022
 
-A Clojure library designed to ... well, that part is up to you.
+My portfolio for 2022.
 
 ## Usage
 
-FIXME
+### Backend
+use leiningen
+
+### Frontend
+npx run dev
 
 ## License
 
