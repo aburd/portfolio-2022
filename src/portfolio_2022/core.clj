@@ -1,6 +1,7 @@
 (ns portfolio-2022.core
   (:require [ring.adapter.jetty :as jetty]
             [ring.middleware.resource :refer [wrap-resource]]
+            [ring.middleware.cookies :refer [wrap-cookies]]
             [ring.middleware.params :refer [wrap-params]]
             [ring.middleware.reload :refer [wrap-reload]]
             [ring.middleware.refresh :refer [wrap-refresh]]
@@ -32,10 +33,20 @@
                  :headers {"Content-Type" "text/plain"}
                  :body "Not found"})))
 
+(defn wrap-cookie-settings [handler]
+  (fn [req]
+    (let [cookies (:cookies req)
+          cookie-options (cond-> {}
+                           (contains? cookies :locale) (merge {:locale (:locale cookies)})
+                           (contains? cookies :theme) (merge {:theme (:theme cookies)}))]
+      (handler (merge req cookie-options)))))
+
 (defn basic-app [handler]
   (-> handler
+      wrap-cookie-settings
       (wrap-tower tower-config)
       (wrap-resource "public")
+      wrap-cookies
       wrap-keyword-params
       wrap-params))
 

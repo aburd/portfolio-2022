@@ -1,5 +1,6 @@
 (ns portfolio-2022.fe.core)
 
+; theming code
 (defn css-root []
   (.-documentElement js/document))
 
@@ -25,7 +26,10 @@
   (if (.. ev -target -checked)
     (set-theme (dark-theme))
     (set-theme (light-theme))))
-    
+
+; language code
+(defn language-control []
+  (.querySelector js/document "))
 
 (defn bind-controls []
   (.addEventListener (theme-switch) "click" handle-theme-click)) 
