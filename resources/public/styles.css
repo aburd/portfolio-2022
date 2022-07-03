@@ -6,6 +6,7 @@
 
 html, body {
   margin: 0;
+  font-family: monospace;
   background-color: var(--main-bg-color);
   color: var(--main-f-color);
 }
@@ -19,6 +20,8 @@ a:visited {
 
 .container {
   padding: 1rem;
+  max-width: 90%;
+  margin: auto;
 }
 
 nav ul, .social-icons ul {
@@ -39,6 +42,20 @@ nav ul, .social-icons ul {
 .social-icons img {
   height: 2rem;
   width: 2rem;
+}
+
+/* Home */
+@media only screen and (max-width: 600px) {
+}
+.page-home h1, .page-home h2, .page-home h3 {
+  text-align: center; 
+}
+.page-cover {
+  text-align: center;
+}
+.page-cover img {
+  max-width: 300px;
+  width: 100%;
 }
 
 /* Switch code */

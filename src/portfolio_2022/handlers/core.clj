@@ -1,7 +1,9 @@
 (ns portfolio-2022.handlers.core
   (:require 
+    [ring.util.response :refer [redirect]]
     [portfolio-2022.views.core :as views]
     [portfolio-2022.views.home :as home-views]
+    [portfolio-2022.views.about :as about-views]
     [clojure.string :as s]))
 
 (defn html-200 
@@ -13,3 +15,12 @@
      :body (html-fn req)})) 
     
 (def home (html-200 (fn [req] (views/default-page-view home-views/show req))))
+
+(def about (html-200 (fn [req] (views/default-page-view about-views/show req))))
+
+(defn change-locale 
+  "Handles when user wants to change preferred locale."
+  [req]
+  (let [locale (get (:form-params req) "locale")
+        path (get (:form-params req) "redirect-uri")]
+    (merge (redirect path) {:cookies {:locale locale}})))

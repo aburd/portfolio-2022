@@ -27,12 +27,20 @@
     (set-theme (dark-theme))
     (set-theme (light-theme))))
 
-; language code
-(defn language-control []
-  (.querySelector js/document "))
+; locale code
+(defn locale-form []
+  (.querySelector js/document "form.form-locale"))
+
+(defn locale-select []
+  (.querySelector js/document "form.form-locale select"))
+
+(defn handle-locale-change [ev]
+  (println ev)
+  (.submit (locale-form)))
 
 (defn bind-controls []
-  (.addEventListener (theme-switch) "click" handle-theme-click)) 
+  (.addEventListener (theme-switch) "click" handle-theme-click) 
+  (.addEventListener (locale-select) "change" handle-locale-change)) 
 
 (defn init []
   (set-theme (light-theme))

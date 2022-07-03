@@ -28,15 +28,19 @@
    [:input {:type "checkbox"}]
    [:span {:class "slider round"}]])
 
-(defn lang-form 
+(defn locale-form 
   "A form which will allow the user to change languages"
   [req]
-  (let [locale (:locale req)
-        langs [{:value :en :display "English"}
-               {:value :ja :display "日本語"}]]
-    [:form {:class "form-lang"}
-     [:select
-      (for [{value :value display :display} langs]
+  (let [{locale :locale uri :uri query-string :query-string} req
+        locales [{:value :en :display "English"}
+                 {:value :ja :display "日本語"}]
+        redirect-uri (cond-> uri
+                       (some? query-string) (str "?" query-string))]
+                       
+    [:form {:class "form-locale" :action "locale" :method "post"}
+     [:input {:name "redirect-uri" :type "hidden" :value redirect-uri}]
+     [:select {:name :locale}
+      (for [{value :value display :display} locales]
         [:option {:value value :selected (= value locale)} display])]]))
 
 (defn social
@@ -53,15 +57,17 @@
     [:li
       [:div {:class "container-themes"} (switch)]]
     [:li
-      [:div {:class "container-lang"} (lang-form req)]]]])
+      [:div {:class "container-locale"} (locale-form req)]]]])
 
 (defn default-page-view 
   [html-fn req]
-  (let [t (:t' req)
-        nav-options [{:url (str "/" "home") :text (t :ui/nav/home)}
-                     {:url (str "/" "works") :text (t :ui/nav/works)}
-                     {:url (str "/" "terminal") :text (t :ui/nav/terminal)}
-                     {:url (str "/" "contact") :text (t :ui/nav/contact)}]]
+  (let [t (:t req)
+        locale (:locale req)
+        nav-options [{:url (str "/") :text (t locale :ui/nav/home)}
+                     {:url (str "/" "about") :text (t locale :ui/nav/about)}
+                     {:url (str "/" "works") :text (t locale :ui/nav/works)}
+                     {:url (str "/" "terminal") :text (t locale :ui/nav/terminal)}
+                     {:url (str "/" "contact") :text (t locale :ui/nav/contact)}]]
     (html-view-wrap [:div {:class "container"}
                      [:div {:class "container-nav"} (nav nav-options nil)]
                      [:div {:class "container-social"} (social req)]

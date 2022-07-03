@@ -17,6 +17,7 @@
 Since then, I've made websites for many client's, worked on multiple webapps for other teams and worked on my own webapps. Because I'm primarily self-taught, or have been in a lot of situations where I've had to learn something to progress a project forward, I have a lot of experience doing things myself and therefore a decent amount of experience in most layers of the web stack. 
                      
 Currently, I am employed at Zeals Co. Ltd where I've worked as a frontend engineer, full-stack engineer, tech-lead and now a VP. Although I recognize the importance of management, I would say I'm an engineer at heart. I just like making things. On the side, I'm also currently working on [hangzone](https://github.com/hangforever), an app that allows people to meet others in public places around Tokyo."
+           :about-website-title "About This Website"
            :about-website* "The purpose of this website is to introduce others to me and hopefully serve as a reflection of how I approach things. This website's primary goal is to please you, the user. Therefore, it's optimized to load fast. It uses javascript only where it is absolutely necessary to enhance your experience. Were there no dynamic information, I would have just served up static HTML pages, but since I live in Japan, there is some possibility you would rather read this page in Japanese, which is offered if your browser settings are set to Japanese.
                            
 Although this website was made over a weekend, my approach was to try and value your time hopefully as much as you do. Hopefully you can see this website even when your have a terrible connection, or are viewing this on a screen-reader.
@@ -24,6 +25,7 @@ Although this website was made over a weekend, my approach was to try and value 
 That is not to say I don't enjoy the million lines of Javascript SPA or the ultra-modern server-side-rendered, hydrated, code-split, Typescript masterpiece. I do think those have a place on the web (who doesn't want to do modern photo-editing in the browser?). Is just that I really do believe in simplicity and using the right tool for the job."
            :ui {:submit "submit"
                 :nav {:home "home"
+                      :about "about"
                       :works "work history"
                       :terminal "terminal"
                       :contact "contact"}}
@@ -36,9 +38,15 @@ That is not to say I don't enjoy the million lines of Javascript SPA or the ultr
 それ以来、私は多くのクライアントのためにWebサイトを作成し、他のチームのために複数のWebアプリに取り組み、自分のWebアプリに取り組みました。私は主に独学であるか、プロジェクトを進めるために何かを学ばなければならない多くの状況にあったので、私は自分で物事を行う多くの経験があり、したがってほとんどの層でかなりの量の経験がありますWebスタックの。
                      
 現在、私はZeals Co. Ltdに勤務しており、フロントエンドエンジニア、フルスタックエンジニア、技術リーダー、そして現在はVPとして働いています。私は経営の重要性を認識していますが、私は本質的にエンジニアだと思います。私は物を作るのが好きです。一方で、現在、東京近郊の公共の場所で人と出会えるアプリ[hangzone](https://github.com/hangforever)にも取り組んでいます。"
-         :about-website* ""
+         :about-website-title "このウェブサイトについて"
+         :about-website* "このウェブサイトの目的は、私に他の人を紹介し、うまくいけば私が物事に取り組む方法の反映として役立つことです。このウェブサイトの主な目標は、ユーザーであるあなたを喜ばせることです。したがって、高速にロードするように最適化されています。それはあなたの経験を強化するために絶対に必要な場合にのみjavascriptを使用します。動的な情報がなかったら、静的なHTMLページを提供しただけでしたが、私は日本に住んでいるので、ブラウザの設定が日本語に設定されている場合に提供される日本語でこのページを読む方がよい場合があります。
+
+このウェブサイトは週末に作成されましたが、私のアプローチは、うまくいけばあなたと同じくらいあなたの時間を大切にすることでした。うまくいけば、あなたがひどい接続を持っているとき、またはスクリーンリーダーでこれを見ているときでさえ、あなたはこのウェブサイトを見ることができます。
+
+だからといって、何百万行ものJavascript SPAや、サーバーサイドでレンダリングされ、ハイドレイトされた、コード分割された超近代的なTypescriptの傑作を楽しんでいないわけではありません。私はそれらがウェブ上にあると思います（ブラウザで最新の写真編集をしたくない人はいますか？）。単純さを本当に信じており、仕事に適したツールを使用しているというだけです。"
          :ui {:submit "送信"
               :nav {:home "ホーム"
+                    :about "これは？"
                     :works "履歴"
                     :terminal "ターミナル"
                     :contact "連絡"}}

@@ -24,6 +24,8 @@
       (router 
         [
          ["/" {:get {:handler handlers/home}}]
+         ["/about" {:get {:handler handlers/about}}]
+         ["/locale" {:post {:handler handlers/change-locale}}]
          ["/echo"
            {:get {:handler (fn [req] 
                              {:status 200
@@ -37,9 +39,9 @@
   (fn [req]
     (let [cookies (:cookies req)
           cookie-options (cond-> {}
-                           (contains? cookies :locale) (merge {:locale (:locale cookies)})
+                           (contains? cookies "locale") (merge {:locale (keyword (:value (get cookies "locale")))})
                            (contains? cookies :theme) (merge {:theme (:theme cookies)}))]
-      (handler (merge req cookie-options)))))
+     (handler (merge req cookie-options)))))
 
 (defn basic-app [handler]
   (-> handler

@@ -2,12 +2,11 @@
   (:require [hiccup.core :refer [html]]))
 
 (defn show [req] 
-  [:div {:class "page-home"} 
-   [:h1 {:class "page-tag-line"} ((:t' req) :my-name)]
-   [:h2 {:class "page-sub-tag-line"} ((:t' req) :work-title)]
-   [:div {:class "page-cover"} [:img {:src "/myself.jpeg"}]]
-   [:h3 "About Me"]
-   [:p {:class "page-body-text"} ((:t' req) :about-me)]
-   [:h3 "About This Website"]
-   [:p {:class "page-body-text"} ((:t' req) :about-website)]])
+  (let [t (:t req)
+        locale (:locale req)]
+    [:div {:class "page-home"} 
+     [:h1 {:class "page-tag-line"} (t locale :my-name)]
+     [:h2 {:class "page-sub-tag-line"} (t locale :work-title)]
+     [:div {:class "page-cover"} [:img {:src "/myself.jpeg"}]]
+     [:p {:class "page-body-text"} (t locale :about-me)]]))
     
