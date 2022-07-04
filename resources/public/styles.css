@@ -4,35 +4,61 @@
   --main-f-color-visited: #3c005a;
 }
 
-html, body {
+html,
+body {
   margin: 0;
-  font-family: monospace;
+  font-family: Courier New, monospace;
+  font-size: 1.5vw;
   background-color: var(--main-bg-color);
   color: var(--main-f-color);
+  transition: 0.4s;
 }
 
 a {
   color: var(--main-f-color);
+  transition: 0.4s;
 }
 a:visited {
   color: var(--main-f-color-visited);
+  transition: 0.4s;
 }
 
-.container {
-  padding: 1rem;
-  max-width: 90%;
-  margin: auto;
+h1,
+h2,
+h3 {
+  text-align: center;
 }
 
-nav ul, .social-icons ul {
+@media only screen and (max-width: 450px) {
+  html,
+  body {
+    font-size: 5vw;
+  }
+}
+
+nav ul,
+.social-icons ul {
   margin: 0;
   padding: 0;
   display: flex;
   list-style: none;
 }
 
-nav ul, .social-icons ul {
+nav ul,
+.social-icons ul {
   justify-content: space-between;
+  flex-flow: row wrap;
+}
+
+nav ul li {
+  padding: 0.1rem;
+}
+
+.container {
+  padding: 1rem;
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
 }
 
 .social-icons ul {
@@ -47,9 +73,6 @@ nav ul, .social-icons ul {
 /* Home */
 @media only screen and (max-width: 600px) {
 }
-.page-home h1, .page-home h2, .page-home h3 {
-  text-align: center; 
-}
 .page-cover {
   text-align: center;
 }
@@ -59,7 +82,7 @@ nav ul, .social-icons ul {
 }
 
 /* Switch code */
- /* The switch - the box around the slider */
+/* The switch - the box around the slider */
 .switch {
   position: relative;
   display: inline-block;
@@ -83,8 +106,8 @@ nav ul, .social-icons ul {
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .slider:before {
@@ -97,16 +120,16 @@ nav ul, .social-icons ul {
   background-color: #ddd;
   background-image: url("/umbrella.png");
   background-size: 100%;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: #2196f3;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #2196f3;
 }
 
 input:checked + .slider:before {
