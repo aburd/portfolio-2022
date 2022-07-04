@@ -1,7 +1,9 @@
 :root {
-  --main-bg-color: #ddd;
-  --main-f-color: #333;
-  --main-f-color-visited: #3c005a;
+  --main-bg-color: #333;
+  --primary-color: #ddd;
+  --secondary-color: #eabfff;
+  --github-icon-url: url("/github_dark.png");
+  --email-icon-url: url("/email_dark.png");
 }
 
 html,
@@ -10,16 +12,16 @@ body {
   font-family: Courier New, monospace;
   font-size: 1.5vw;
   background-color: var(--main-bg-color);
-  color: var(--main-f-color);
+  color: var(--primary-color);
   transition: 0.4s;
 }
 
 a {
-  color: var(--main-f-color);
+  color: var(--primary-color);
   transition: 0.4s;
 }
 a:visited {
-  color: var(--main-f-color-visited);
+  color: var(--secondary-color);
   transition: 0.4s;
 }
 
@@ -27,6 +29,10 @@ h1,
 h2,
 h3 {
   text-align: center;
+}
+
+form {
+  margin: 0;
 }
 
 @media only screen and (max-width: 450px) {
@@ -38,36 +44,61 @@ h3 {
 
 nav ul,
 .social-icons ul {
+  display: flex;
   margin: 0;
   padding: 0;
-  display: flex;
   list-style: none;
 }
-
-nav ul,
-.social-icons ul {
-  justify-content: space-between;
-  flex-flow: row wrap;
+nav ul {
+  justify-content: start;
 }
-
 nav ul li {
   padding: 0.1rem;
 }
 
+.social-icons ul {
+  justify-content: end;
+}
+.social-icons .icon {
+  height: 2rem;
+  width: 2rem;
+  background-size: 100%;
+}
+.icon.github-icon {
+  background-image: var(--github-icon-url);
+}
+.icon.email-icon {
+  background-image: var(--email-icon-url);
+}
+
+nav ul, .social-icons {
+  height: 100%;
+}
+nav ul li, .social-icons ul li {
+  display: flex;
+  align-items: center;
+}
+
 .container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 2fr;
+  grid-template-areas:
+    "nav social"
+    "body body";
   padding: 1rem;
   width: 90%;
   max-width: 1200px;
   margin: auto;
 }
-
-.social-icons ul {
-  justify-content: center;
+.container-nav {
+  grid-area: nav;
 }
-
-.social-icons img {
-  height: 2rem;
-  width: 2rem;
+.container-social {
+  grid-area: social;
+}
+.container-body {
+  grid-area: body;
 }
 
 /* Home */
@@ -118,14 +149,14 @@ nav ul li {
   left: 4px;
   bottom: 4px;
   background-color: #ddd;
-  background-image: url("/umbrella.png");
+  background-image: url("/umbrella_light.png");
   background-size: 100%;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
 input:checked + .slider {
-  background-color: #2196f3;
+  background-color: var(--secondary-color);
 }
 
 input:focus + .slider {
@@ -136,8 +167,8 @@ input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
-  background-image: url("/sunglasses.png");
-  background-color: #333;
+  background-image: url("/sunglasses_dark.png");
+  background-color: var(--main-bg-color);
 }
 
 /* Rounded sliders */

@@ -23,9 +23,9 @@
 
 (defn switch
   "Makes a toggle switch"
-  []
+  [on]
   [:label {:class "switch"}
-   [:input {:type "checkbox"}]
+   [:input {:type "checkbox" :checked on}]
    [:span {:class "slider round"}]])
 
 (defn locale-form 
@@ -50,14 +50,14 @@
    [:ul
     [:li 
      [:a {:href "https://www.github.com/aburd"}
-      [:img {:src "/github.png"}]]]
+      [:div {:class "icon github-icon"}]]]
     [:li 
      [:a {:href "mailto:aaron.burdick@protonmail.com"}
-      [:img {:src "/email.png"}]]]
+      [:div {:class "icon email-icon"}]]]
     [:li
-      [:div {:class "container-themes"} (switch)]]
+      [:div {:class "container-themes"} (switch true)]]
     [:li
-      [:div {:class "container-locale"} (locale-form req)]]]])
+      (locale-form req)]]])
 
 (defn default-page-view 
   [html-fn req]
@@ -71,4 +71,4 @@
     (html-view-wrap [:div {:class "container"}
                      [:div {:class "container-nav"} (nav nav-options nil)]
                      [:div {:class "container-social"} (social req)]
-                     [:div {:body "container-body"} (html-fn req)]])))
+                     [:div {:class "container-body"} (html-fn req)]])))

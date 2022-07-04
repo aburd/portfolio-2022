@@ -6,13 +6,18 @@
 
 (defn light-theme []
   {"--main-bg-color" "#ddd"
-   "--main-f-color" "#333"
-   "--main-f-color-visited" "#3c005a"})
+   "--primary-color" "#333"
+   "--secondary-color" "#3c005a"
+   "--github-icon-url" "url(\"/github_light.png\")"
+   "--email-icon-url" "url(\"/email_light.png\")"})
+   
 
 (defn dark-theme []
   {"--main-bg-color" "#333"
-   "--main-f-color" "#ddd"
-   "--main-f-color-visited" "#eabfff"})
+   "--primary-color" "#ddd"
+   "--secondary-color" "#eabfff"
+   "--github-icon-url" "url(\"/github_dark.png\")"
+   "--email-icon-url" "url(\"/email_dark.png\")"})
 
 (defn set-theme [theme]
   (let [root (css-root)]
@@ -43,5 +48,5 @@
   (.addEventListener (locale-select) "change" handle-locale-change)) 
 
 (defn init []
-  (set-theme (light-theme))
+  (set-theme (dark-theme))
   (bind-controls))
