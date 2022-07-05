@@ -11,7 +11,7 @@
                      :baz-alias      :example.bar/baz}
            :greeting "Ahoyhoy!"
            :my-name "Aaron Burdick"
-           :work-title "Software Engineer" 
+           :work-title "software engineer" 
            :about-me* "I've been programming since I was in middle school making games and such. In high-school, I started getting into the web. I helped my brother with his blog and a few local band's websites. In college, I mainly focused on studying Japanese and music, but returned to programming for the web around 2013.
                      
 Since then, I've worked extensively on developing websites and webapps through with various tools and patterns. I've worked with static sites, Wordpress, MVC style frameworks (Ruby on Rails, etc.), and SPAs/SSR apps which consume REST APIs or gRPC web. In addition, I've worked on native-apps using Electron as well.    
@@ -19,12 +19,18 @@ Since then, I've worked extensively on developing websites and webapps through w
 Currently, I am employed at Zeals Co. Ltd where I've worked as a frontend engineer, full-stack engineer, tech-lead and now a VP. Although I recognize the importance of management, I would say I'm an engineer at heart. I like making things, especially things which users (at every level of the stack) love.
                       
 I'm currently working on [hangzone](https://github.com/hangforever), an app that allows people to meet others in public places around Tokyo."
-           :about-website-title "About This Website"
+           :about-website-title "this website"
            :about-website* "If you're reading this website, hopefully you can learn a bit about me and perhaps we can work together on something! 
                            
-This website is meant to be as light and compatible with your device as is possible. Hopefully you can see this website even when your connection may not be good, or are viewing this on a screen-reader.
-                           
-That is not to say I don't enjoy the million lines of Javascript SPA or the ultra-modern server-side-rendered, hydrated, code-split, Typescript masterpiece. I do think those have a place on the web. However this page should remain as simple as possible to serve the widest audience possible."
+This particular website is meant to be as light and compatible with your device as is possible. Hopefully you can see this website even when your connection may not be good, or are viewing this on a screen-reader."
+           :about-want-title "what i want to work on"
+           :about-want* "I would like to work on something involved in making the world a better place. Especially anything regarding climate change, like renewable energy, etc. I always wanted to do something involving solar-panels.
+                       
+Technologically speaking, I've no hard preferences. Web, mobile, native, heck even embedded would be interesting. As long as it helps people and makes a difference, then I will give it my all."
+           :about-like-title "things i enjoy"
+           :about-like "Here are some things I enjoy"
+           :about-dislike-title "things i dislike"
+           :about-dislike "Here are some things I dislike"
            :ui {:submit "submit"
                 :nav {:home "home"
                       :about "about"
@@ -33,7 +39,7 @@ That is not to say I don't enjoy the million lines of Javascript SPA or the ultr
                       :contact "contact"}}
            :missing  "|Missing translation: [%1$s %2$s %3$s]|"}
     :ja {:greeting "こんにちは！"
-         :my-name "バーディク　アーロン"
+         :my-name "バーディクアーロン"
          :work-title "ソフトウェアエンジニア"
          :about-me* "中学生の頃からゲームなどを作ってプログラミングをしています。高校生の頃、私はウェブを始めました。私は兄のブログといくつかの地元のバンドのウェブサイトで兄を助けました。大学では主に日本語と音楽の勉強に専念していましたが、2013年頃にウェブのプログラミングに戻りました。
 
@@ -42,12 +48,14 @@ That is not to say I don't enjoy the million lines of Javascript SPA or the ultr
 現在、私はZeals Co. Ltdに勤務しており、フロントエンドエンジニア、フルスタックエンジニア、技術リーダー、そして現在はVPとして働いています。私は経営の重要性を認識していますが、私は本質的にエンジニアだと思います。私は物を作るのが好きです。特に、ユーザー（スタックのすべてのレベル）が好きなものを作るのが好きです。
 
 現在、東京の公共の場所で人と出会えるアプリ[hangzone](https://www.github.com/aburd/hangforever)に取り組んでいます。"
-         :about-website-title "このウェブサイトについて"
+         :about-website-title "このウェブサイト"
          :about-website* "このウェブサイトを読んでいるなら、うまくいけば、私について少し学ぶことができ、おそらく私たちは一緒に何かに取り組むことができます！
 
-このウェブサイトは、可能な限り軽量でデバイスとの互換性を保つことを目的としています。 接続が良好でない場合や、スクリーンリーダーでこれを表示している場合でも、このWebサイトを表示できることを願っています。
-
-だからといって、何百万行ものJavascript SPAや、サーバーサイドでレンダリングされ、ハイドレイトされた、コード分割された超近代的なTypescriptの傑作を楽しんでいないわけではありません。 私はそれらがウェブ上に場所を持っていると思います。 ただし、このページは、可能な限り幅広い視聴者にサービスを提供するために、可能な限りシンプルなままにする必要があります。"
+特にこのウェブサイトは、可能な限り軽量でデバイスとの互換性を保つことを目的としています。 接続が良好でない場合や、スクリーンリーダーでこれを表示している場合でも、このWebサイトを表示できることを願っています。"
+         :about-want-title "what i want to work on"
+         :about-want "I would like to work on "
+         :about-like-title "things i enjoy"
+         :about-like* "Here are some things I enjoy."
          :ui {:submit "送信"
               :nav {:home "ホーム"
                     :about "これは？"
