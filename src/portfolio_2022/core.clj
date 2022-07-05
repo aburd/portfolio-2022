@@ -7,16 +7,14 @@
             [ring.middleware.refresh :refer [wrap-refresh]]
             [ring.middleware.keyword-params :refer [wrap-keyword-params]]
             [reitit.ring :refer [ring-handler router]]
-            [clojure.edn :as edn]
             [taoensso.tower.ring :refer [wrap-tower]] 
-            [clojure.java.io :as io]
             [clojure.pprint :refer [pprint]]
-            [portfolio-2022.handlers.core :as handlers])
+            [portfolio-2022.handlers.core :as handlers]
+            [portfolio-2022.util :refer [tower-config]])
   (:gen-class))
 
 (defonce server (atom nil))
 
-(def tower-config (edn/read-string (slurp (io/resource "tower-config.edn"))))
 
 (def routes
   (some-fn
@@ -31,9 +29,7 @@
                              {:status 200
                               :headers {"Content-Type" "text/plain"}
                               :body (with-out-str (pprint req))})}}]]))
-    (constantly {:status 404
-                 :headers {"Content-Type" "text/plain"}
-                 :body "Not found"})))
+    (constantly handlers/not-found)))
 
 (defn wrap-cookie-settings [handler]
   (fn [req]

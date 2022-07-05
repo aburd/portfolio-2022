@@ -45,6 +45,10 @@ form {
   }
 }
 
+.center {
+  text-align: center;
+}
+
 .main-nav ul,
 .social-icons ul {
   display: flex;
@@ -177,6 +181,11 @@ form {
 /* About */
 .page-about iframe {
   height: auto;
+  width: 100%;
+}
+
+/* Not Found */
+.page-not-found {
   width: 100%;
 }
 
