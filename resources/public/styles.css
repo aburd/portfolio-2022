@@ -79,6 +79,12 @@ form {
   display: flex;
   align-items: center;
 }
+.main-nav ul li {
+  padding: 0 0.3rem;
+}
+.social-icons ul li {
+  padding: 0 0.1rem;
+}
 .main-nav button {
   display: none;
 }
