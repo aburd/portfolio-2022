@@ -4,6 +4,7 @@
     [portfolio-2022.views.core :as views]
     [portfolio-2022.views.home :as home-views]
     [portfolio-2022.views.about :as about-views]
+    [portfolio-2022.views.contact :as contact-views]
     [portfolio-2022.views.not-found :as not-found-views]
     [clojure.string :as s]))
 
@@ -17,7 +18,9 @@
     
 (def home (html-200 (fn [req] (views/default-page-view home-views/show req)))) 
 
-(def about (html-200 (fn [req] (views/default-page-view about-views/show))))
+(def about (html-200 (fn [req] (views/default-page-view about-views/show req))))
+
+(def contact (html-200 (fn [req] (views/default-page-view contact-views/show req))))
 
 (def not-found 
   {:status 404

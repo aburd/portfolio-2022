@@ -16,6 +16,9 @@ body {
   color: var(--primary-color);
   transition: 0.4s;
 }
+input {
+  font-size: 1.5vw;
+}
 
 a {
   color: var(--primary-color);
@@ -43,12 +46,27 @@ form {
   body {
     font-size: 5vw;
   }
+  input {
+    font-size: 5vw;
+  }
 }
 
+/* Helpers */
 .center {
   text-align: center;
 }
 
+/* Forms */
+.form-group {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.form-group input,
+.form-group textarea {
+  width: 100%;
+}
+
+/* Layout UI */
 .main-nav ul,
 .social-icons ul {
   display: flex;
@@ -182,6 +200,11 @@ form {
 .page-about iframe {
   height: auto;
   width: 100%;
+}
+
+/* Contact */
+.page-contact label {
+  text-transform: capitalize;
 }
 
 /* Not Found */
