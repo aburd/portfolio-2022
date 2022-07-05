@@ -16,6 +16,7 @@
   The `active` arg will add an 'active' class."
   [options active]
   [:nav {:class "main-nav"}
+   [:button {:class "start-btn"} "Start"]
    [:ul
     (for [option options]
       [:li
@@ -23,9 +24,9 @@
 
 (defn switch
   "Makes a toggle switch"
-  [on]
+  [on name]
   [:label {:class "switch"}
-   [:input {:type "checkbox" :checked on}]
+   [:input {:type "checkbox" :checked on :name name}]
    [:span {:class "slider round"}]])
 
 (defn locale-form 
@@ -55,7 +56,7 @@
      [:a {:href "mailto:aaron.burdick@protonmail.com"}
       [:div {:class "icon email-icon"}]]]
     [:li
-      [:div {:class "container-themes"} (switch true)]]
+      [:div {:class "container-themes"} (switch true "theme")]]
     [:li
       (locale-form req)]]])
 

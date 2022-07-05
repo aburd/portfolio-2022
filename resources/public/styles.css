@@ -1,5 +1,6 @@
 :root {
   --main-bg-color: #333;
+  --main-border-color: #bbb;
   --primary-color: #ddd;
   --secondary-color: #eabfff;
   --github-icon-url: url("/github_dark.png");
@@ -42,17 +43,17 @@ form {
   }
 }
 
-nav ul,
+.main-nav ul,
 .social-icons ul {
   display: flex;
   margin: 0;
   padding: 0;
   list-style: none;
 }
-nav ul {
+.main-nav ul {
   justify-content: start;
 }
-nav ul li {
+.main-nav ul li {
   padding: 0.1rem;
 }
 
@@ -71,12 +72,57 @@ nav ul li {
   background-image: var(--email-icon-url);
 }
 
-nav ul, .social-icons {
+.main-nav ul, .social-icons {
   height: 100%;
 }
-nav ul li, .social-icons ul li {
+.main-nav ul li, .social-icons ul li {
   display: flex;
   align-items: center;
+}
+.main-nav button {
+  display: none;
+}
+.form-locale {
+  height: 100%;
+}
+.form-locale select {
+  height: 100%;
+  background: var(--main-bg-color);
+  color: var(--primary-color);
+  border: 1px solid var(--main-border-color);
+  border-radius: 5px;
+}
+
+@media only screen and (max-width: 450px) {
+  .main-nav ul,
+  .social-icons ul {
+  }
+  .main-nav ul {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    z-index: 1;
+    background-color: var(--main-bg-color);
+    height: inherit;
+    padding: 1rem;
+    border-radius: 0 10px 10px 10px;
+    border: 1px solid var(--main-border-color);
+    font-size: 6vw;
+  }
+  .main-nav ul.active {
+    display: block;
+  }
+  .main-nav ul li {
+    padding: 0.2rem;
+  }
+  .main-nav .start-btn {
+    display: block;
+    background: var(--main-bg-color);
+    color: var(--primary-color);
+    border: 1px solid var(--main-border-color);
+    padding: 0.5rem 1rem;
+    text-decoration: underline;
+  }
 }
 
 .container {
@@ -109,6 +155,12 @@ nav ul li, .social-icons ul li {
 }
 .page-cover img {
   max-width: 300px;
+  width: 100%;
+}
+
+/* About */
+.page-about iframe {
+  height: auto;
   width: 100%;
 }
 
