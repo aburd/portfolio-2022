@@ -17,7 +17,9 @@
                       :contact "contact"}
                 :name "name"
                 :email "e-mail"
-                :comments "comments"}
+                :comments "comments"
+                :work-period "work period"
+                :employment "employment"}
            :greeting "Ahoyhoy!"
            :my-name "Aaron Burdick"
            :work-title "software engineer" 
@@ -54,7 +56,9 @@ Technologically speaking, I've no hard preferences. Web, mobile, native, heck ev
                     :contact "連絡"}
               :name "名前"
               :email "メールアドレス"
-              :comments "コメント"}
+              :comments "コメント"
+              :work-period "雇用期間"
+              :employment "雇用形態"}
          :greeting "こんにちは！"
          :my-name "バーディクアーロン"
          :work-title "ソフトウェアエンジニア"

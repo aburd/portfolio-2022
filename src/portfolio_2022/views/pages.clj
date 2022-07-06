@@ -48,10 +48,13 @@
       [:li "Using tools that aren't necessary"]
       [:li "Building things without user-input"]]]))
 
-(defn work-history [req] 
+(defn work-history [req work-history] 
   (let [locale (:locale req)]
     [:div {:class "page-work-history"} 
-     [:h1 {:class "page-tag-line"} (t locale :work-history-title)]]))
+     [:h1 {:class "page-tag-line"} (t locale :work-history-title)]
+     [:ul {:class "work-list"}
+      (for [work work-history]
+        [:li (c/work-item work)])]]))
 
 (defn terminal [req] 
   (let [locale (:locale req)]

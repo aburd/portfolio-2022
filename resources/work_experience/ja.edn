@@ -1,34 +1,34 @@
-[{:company_name "Total English Support Team"
-  :date_start "2014-10"
-  :date_end "2014-12"
-  :employment_type "副業"
+[{:company-name "Total English Support Team"
+  :date-start "2014-10"
+  :date-end "2014-12"
+  :employment-type "副業"
   :tags ["PHP" "HTML" "CSS" "JS"]
   :description "カスタムWordpressウェブサイトを提供しました。"}
- {:company_name "Servcorp Japan"
-  :date_start "2015-05"
-  :date_end "2017-06"
-  :employment_type "正社員"
+ {:company-name "Servcorp Japan"
+  :date-start "2015-05"
+  :date-end "2017-06"
+  :employment-type "正社員"
   :tags ["C#" "PHP" "HTML" "CSS" "JS" "Node.js"]
   :description
   "マーケティングキャンペーン用のウェブサイトの維持を担当。 同社の公式サイトも整備。"}
- {:company_name "Mickey Kids"
-  :date_start "2016-06"
-  :date_end "2016-08"
-  :employment_type "副業"
+ {:company-name "Mickey Kids"
+  :date-start "2016-06"
+  :date-end "2016-08"
+  :employment-type "副業"
   :tags ["PHP" "HTML" "CSS" "JS"]
   :description "カスタムWordpressウェブサイトを提供しました。"}
- {:company_name "Present Day Technology"
-  :date_start "2017-02"
-  :date_end "2017-07"
-  :employment_type "副業"
+ {:company-name "Present Day Technology"
+  :date-start "2017-02"
+  :date-end "2017-07"
+  :employment-type "副業"
   :tags ["mysql" "node.js" "graphQL" "react" "meteor" "AWS"]
   :description
   "2人のチームで働き、Diaz Gill社に[高度にカスタマイズされたWebサイト](https://diazgill.com/)を提供しました。 彼らは本当に顧客を驚かせるページを望んでいましたが、スタッフはページを最新の状態に保ち、データ入力を行うことができる必要がありました。 データ入力のために、私たちは彼らにワードプレスを与えました。 次に、BFFはワードプレスDBからデータを取得し、GraphQLを介してフロントエンドに提供します。 私はSREとバックエンド作業の一部を担当していました。
   このサイトはもうメンテナンスしていませんが、まだ使用しているようです。"}
- {:company_name "ZEALS株式会社"
-  :date_start "2017-07"
-  :date_end nil
-  :employment_type "正社員"
+ {:company-name "ZEALS株式会社"
+  :date-start "2017-07"
+  :date-end nil
+  :employment-type "正社員"
   :tags
   ["HTML"
    "CSS"

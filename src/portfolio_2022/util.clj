@@ -18,7 +18,7 @@
       :en)))
 
 (defn work-experience-path [locale]
-  (io/resource (format "job_experience/%s.edn" (name (locale-to-supported-locale locale))))) 
+  (io/resource (format "work_experience/%s.edn" (name (locale-to-supported-locale locale))))) 
 
 (defn work-experience [locale]
   (edn/read-string (slurp (work-experience-path locale))))

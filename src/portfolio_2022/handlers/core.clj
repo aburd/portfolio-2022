@@ -1,5 +1,6 @@
 (ns portfolio-2022.handlers.core
   (:require 
+    [portfolio-2022.util :as util]
     [portfolio-2022.views.core :as views]
     [portfolio-2022.views.pages :as pages]
     [ring.util.response :refer [redirect]]))
@@ -24,7 +25,10 @@
 (defn work-history
   [req] 
   (html-200 
-    (views/default-page-view req pages/work-history)))
+    (views/default-page-view 
+      req 
+      pages/work-history
+      (util/work-experience (:locale req)))))
 
 (defn terminal
   [req] 

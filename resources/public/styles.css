@@ -224,6 +224,45 @@ header {
   width: 100%;
 }
 
+/* Work History */
+.work-list {
+  margin: 0;
+  padding: 0;
+}
+.work-list li {
+  list-style: none;
+}
+.work-item {
+  margin-bottom: 2rem;
+}
+.work-item label {
+  text-decoration: underline;
+  text-transform: capitalize;
+}
+.work-item label:after {
+  content: ":";
+  margin-right: 0.3rem;
+}
+.work-item .company-name {
+  font-weight: bold;
+}
+.work-item .description {
+  margin: 0.5rem 0;
+}
+.work-item .tags {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.work-item .tags li {
+  color: var(--secondary-color);
+  display: inline-block;
+  margin-right: 0.3rem;
+  margin-bottom: 0.3rem;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid var(--main-border-color);
+}
+
 /* Contact */
 .page-contact label {
   text-transform: capitalize;

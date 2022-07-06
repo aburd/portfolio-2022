@@ -62,7 +62,7 @@
       (locale-form req)]]])
 
 (defn default-page-view 
-  [req main-hiccup]
+  [req main-hiccup & args]
   (let [t (:t req)
         locale (:locale req)
         nav-options (map 
@@ -75,5 +75,5 @@
     (html-view-wrap [:div {:class "container"}
                      [:header [:div {:class "container-nav"} (nav nav-options)]
                               [:div {:class "container-social"} (social req)]]
-                     [:main (main-hiccup req)]
+                     [:main (apply main-hiccup req args)]
                      [:footer]])))
