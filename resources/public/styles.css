@@ -165,14 +165,34 @@ form {
 
 .container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 2fr;
+  grid-template-columns: 1fr;
+  grid-template-rows: 2rem 1fr 2rem;
   grid-template-areas:
-    "nav social"
-    "body body";
+    "header"
+    "body"
+    "footer";
   padding: 1rem;
   width: 90%;
   max-width: 1200px;
+  margin: auto;
+}
+
+header {
+  grid-area: header;
+}
+main {
+  grid-area: body;
+}
+footer {
+  grid-area: footer;
+}
+
+header {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-template-areas: "nav social";
+  width: 100%;
   margin: auto;
 }
 .container-nav {
@@ -180,9 +200,6 @@ form {
 }
 .container-social {
   grid-area: social;
-}
-.container-body {
-  grid-area: body;
 }
 
 /* Home */

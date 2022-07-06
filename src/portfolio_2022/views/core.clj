@@ -70,6 +70,7 @@
                      {:url (str "/" "terminal") :text (t locale :ui/nav/terminal)}
                      {:url (str "/" "contact") :text (t locale :ui/nav/contact)}]]
     (html-view-wrap [:div {:class "container"}
-                     [:div {:class "container-nav"} (nav nav-options nil)]
-                     [:div {:class "container-social"} (social req)]
-                     [:div {:class "container-body"} (html-fn req)]])))
+                     [:header [:div {:class "container-nav"} (nav nav-options nil)]
+                              [:div {:class "container-social"} (social req)]]
+                     [:main (html-fn req)]
+                     [:footer]])))
