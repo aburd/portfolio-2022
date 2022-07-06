@@ -1,0 +1,1 @@
+(defn show [t locale])

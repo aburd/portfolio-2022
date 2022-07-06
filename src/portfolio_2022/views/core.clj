@@ -1,7 +1,8 @@
 (ns portfolio-2022.views.core
   (:require 
     [clojure.string :as s]
-    [hiccup.core :refer [html]]))
+    [hiccup.core :refer [html]]
+    [portfolio-2022.views.components :as c]))
 
 (defn html-view-wrap [inner-html]
   (html [:html
@@ -15,7 +16,6 @@
   "Check if the nav-options is active based on request data."
   [option req]
   (= (:url option) (-> req :reitit.core/match :path)))
-  
 
 (defn nav 
   "Returns a nav hiccup navbar with some list of options."
@@ -29,13 +29,6 @@
          (if (:active option)
            (s/capitalize (:text option))
            [:a {:href (:url option)} (s/capitalize (:text option))])]))]])
-
-(defn switch
-  "Makes a toggle switch."
-  [on switch-name]
-  [:label {:class "switch"}
-   [:input {:type "checkbox" :checked on :name switch-name}]
-   [:span {:class "slider round"}]])
 
 (defn locale-form 
   "A form which will allow the user to change languages."
@@ -64,12 +57,12 @@
      [:a {:href "mailto:aaron.burdick@protonmail.com"}
       [:div {:class "icon email-icon"}]]]
     [:li
-      [:div {:class "container-themes"} (switch true "theme")]]
+      [:div {:class "container-themes"} (c/switch true "theme")]]
     [:li
       (locale-form req)]]])
 
 (defn default-page-view 
-  [html-fn req]
+  [req main-hiccup]
   (let [t (:t req)
         locale (:locale req)
         nav-options (map 
@@ -79,9 +72,8 @@
                        {:url (str "/" "works") :text (t locale :ui/nav/works)}
                        {:url (str "/" "terminal") :text (t locale :ui/nav/terminal)}
                        {:url (str "/" "contact") :text (t locale :ui/nav/contact)}])]
-        
     (html-view-wrap [:div {:class "container"}
                      [:header [:div {:class "container-nav"} (nav nav-options)]
                               [:div {:class "container-social"} (social req)]]
-                     [:main (html-fn req)]
+                     [:main (main-hiccup req)]
                      [:footer]])))

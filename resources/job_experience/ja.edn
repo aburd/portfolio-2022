@@ -1,0 +1,51 @@
+[{:company_name "Total English Support Team"
+  :date_start "2014-10"
+  :date_end "2014-12"
+  :employment_type "副業"
+  :tags ["PHP" "HTML" "CSS" "JS"]
+  :description "カスタムWordpressウェブサイトを提供しました。"}
+ {:company_name "Servcorp Japan"
+  :date_start "2015-05"
+  :date_end "2017-06"
+  :employment_type "正社員"
+  :tags ["C#" "PHP" "HTML" "CSS" "JS" "Node.js"]
+  :description
+  "マーケティングキャンペーン用のウェブサイトの維持を担当。 同社の公式サイトも整備。"}
+ {:company_name "Mickey Kids"
+  :date_start "2016-06"
+  :date_end "2016-08"
+  :employment_type "副業"
+  :tags ["PHP" "HTML" "CSS" "JS"]
+  :description "カスタムWordpressウェブサイトを提供しました。"}
+ {:company_name "Present Day Technology"
+  :date_start "2017-02"
+  :date_end "2017-07"
+  :employment_type "副業"
+  :tags ["mysql" "node.js" "graphQL" "react" "meteor" "AWS"]
+  :description
+  "2人のチームで働き、Diaz Gill社に[高度にカスタマイズされたWebサイト](https://diazgill.com/)を提供しました。 彼らは本当に顧客を驚かせるページを望んでいましたが、スタッフはページを最新の状態に保ち、データ入力を行うことができる必要がありました。 データ入力のために、私たちは彼らにワードプレスを与えました。 次に、BFFはワードプレスDBからデータを取得し、GraphQLを介してフロントエンドに提供します。 私はSREとバックエンド作業の一部を担当していました。
+  このサイトはもうメンテナンスしていませんが、まだ使用しているようです。"}
+ {:company_name "ZEALS株式会社"
+  :date_start "2017-07"
+  :date_end nil
+  :employment_type "正社員"
+  :tags
+  ["HTML"
+   "CSS"
+   "javascript"
+   "typescript"
+   "react.js"
+   "redux"
+   "electron"
+   "node.js"
+   "webpack"
+   "ruby on rails"
+   "MySQL"
+   "GCP"
+   "PHP"]
+  :description
+  "Fanpという会社のアプリのフロントエンドを作成するフロントエンドエンジニアとしてスタートしました。これにより、社内の人々がチャットボットを作成したり、ユーザーを表示したり、設定を微調整したりできるようになりました。他の3人のエンジニアとデザイナーの助けを借りてフロントエンドを最初から作成しました。 後で、バックエンドのさまざまな部分をRubyonRailsで作成しました。 必要に応じてRestAPI、モデル、移行、テストなどを実行します。
+  
+  また、電子で別の内部ツールを使用して、ビジネスチームに必要なさまざまな内部機能を提供しました。
+  
+  私が作成したインフラストラクチャのもう1つの重要な部分 スクラッチは私たちのブラウザ自動化ツールでした。 プログラムで制御されるさまざまなタスクのWebページの操作を自動化できるものが必要でした。 キューメカニズムとしてredisを使用するnode.jsでブラウザー自動化サーバーを作成しました。 その構成は、Reactで作成された画面を介して内部メンバーによって作成されます。"}]
