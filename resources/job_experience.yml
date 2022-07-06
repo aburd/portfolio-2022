@@ -3,20 +3,69 @@ job_experience:
     date_start: 2015-05
     date_end: 2017-06
     employment_type: Full-Time
-    description: | 
-      In charge of web campaigns in in the marketing department of the company.   
+    tags: 
+      - C#
+        PHP
+        HTML
+        CSS
+        JS
+        Node.js
+    description: In charge of maintaining websites for marketing campaigns. Also maintained the company's official website. 
+  - company_name: Total English Support Team 
+    date_start: 2015-10 
+    date_end: 2015-12
+    employment_type: Contract 
+    tags: 
+      - PHP
+        HTML
+        CSS
+        JS
+    description: Provided custom Wordpress website. 
   - company_name: Mickey Kids
     date_start: 2016-06 
     date_end: 2016-08
-    employment_type: Full-Time
-    description: 
+    employment_type: Contract 
+    tags: 
+      - PHP
+        HTML
+        CSS
+        JS
+    description: Provided custom wordpress website
   - company_name: Present Day Technology
     date_start: 2017-02
-    date_end: 2019-06
+    date_end: 2017-07
     employment_type: Contract
-    description: 
+    tags: 
+      - mysql
+        node.js
+        graphQL
+        react
+        meteor
+        AWS
+    description: |
+      Worked in a two person team to provide [a highly customized website](https://diazgill.com/) for the Diaz Gill company. They wanted a page that would really wow their customers, however, the staff needed to be able to keep the page up to date and do data entry. For data entry, we gave them a wordpress. Our BFF then takes the data from the wordpress DB and offers it to the frontend over GraphQL. I was responsible as an SRE and some of the backend work. 
+      We do not maintain this site anymore, but it looks like they're still using it. 
   - company_name: ZEALS株式会社
     date_start: 2017-07 
     date_end: ~ 
     employment_type: Full-Time
-    description: 
+    tags: 
+      - HTML
+        CSS
+        javascript
+        typescript
+        react.js
+        redux
+        electron
+        node.js
+        webpack
+        ruby on rails
+        MySQL
+        GCP
+        PHP
+    description: | 
+      Started as a frontend engineer creating the frontend for the company's app called Fanp, which enabled people within the company to create chatbots, view users, tweak settings, etc. I wrote the frontend from scratch with the help of three other engineers and a designer. Later, I would also write various parts of the backend in ruby on rails. Doing RestAPIs, models, migrations, tests, etc. as necessary.
+
+      I also worked another internal tool in electron which gave our business team various internal functions that were needed.
+
+      Another critical piece of our infrastructure that I created from scratch was our browser automation tool. We needed something that could that could automate operating web pages for various tasks that would be controlled programatically. I wrote the browser automation server in node.js where it used redis as a queue mechanism. The configurations for it are created by internal members through a screen that was made in React.

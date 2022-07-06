@@ -81,6 +81,11 @@ form {
   padding: 0.1rem;
 }
 
+.main-nav li.active a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
 .social-icons ul {
   justify-content: end;
 }
@@ -215,7 +220,7 @@ header {
 
 /* About */
 .page-about iframe {
-  height: auto;
+  /* height: auto; */
   width: 100%;
 }
 
