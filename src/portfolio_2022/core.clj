@@ -23,6 +23,8 @@
         [
          ["/" {:get {:handler handlers/home}}]
          ["/about" {:get {:handler handlers/about}}]
+         ["/works" {:get {:handler handlers/work-history}}]
+         ["/terminal" {:get {:handler handlers/terminal}}]
          ["/contact" {:get {:handler handlers/contact}}]
          ["/locale" {:post {:handler handlers/change-locale}}]
          ["/echo"

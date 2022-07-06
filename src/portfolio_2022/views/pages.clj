@@ -48,6 +48,16 @@
       [:li "Using tools that aren't necessary"]
       [:li "Building things without user-input"]]]))
 
+(defn work-history [req] 
+  (let [locale (:locale req)]
+    [:div {:class "page-work-history"} 
+     [:h1 {:class "page-tag-line"} (t locale :work-history-title)]]))
+
+(defn terminal [req] 
+  (let [locale (:locale req)]
+    [:div {:class "page-terminal"} 
+     [:h1 {:class "page-tag-line"} (t locale :terminal-title)]]))
+
 (defn contact [req] 
   (let [{locale :locale} req]
     [:div {:class "page-contact"} 
