@@ -68,22 +68,24 @@ Technologically speaking, I've no hard preferences. Web, mobile, native, heck ev
 
 現在、私はZeals Co. Ltdに勤務しており、フロントエンドエンジニア、フルスタックエンジニア、技術リーダー、そして現在はVPとして働いています。私は経営の重要性を認識していますが、私は本質的にエンジニアだと思います。私は物を作るのが好きです。特に、ユーザー（スタックのすべてのレベル）が好きなものを作るのが好きです。
 
-現在、東京の公共の場所で人と出会えるアプリ[hangzone](https://www.github.com/aburd/hangforever)に取り組んでいます。"
+現在、東京の公共の場所で人と出会えるアプリ[hangzone](https://www.github.com/hangforever)に取り組んでいます。"
          :about-website-title "このウェブサイト"
          :about-website* "このウェブサイトを読んでいるなら、うまくいけば、私について少し学ぶことができ、おそらく私たちは一緒に何かに取り組むことができます！
 
 特にこのウェブサイトは、可能な限り軽量でデバイスとの互換性を保つことを目的としています。 接続が良好でない場合や、スクリーンリーダーでこれを表示している場合でも、このWebサイトを表示できることを願っています。"
-         :about-want-title "what i want to work on"
-         :about-want "I would like to work on "
-         :about-like-title "things i enjoy"
-         :about-like* "Here are some things I enjoy."
+         :about-want-title "取り組みたいこと"
+         :about-want* "世界をより良い場所にするために何か取り組んでいきたいと思います。 特に、再生可能エネルギーなど、気候変動に関することなら何でも。私はいつもソーラーパネルを使った何かをしたいと思っていました。
+
+技術的に言えば、私は難しい好みはありません。 Web、モバイル、ネイティブ、組み込みさえも興味深いでしょう。 それが人々を助け、違いを生む限り、私はそれに全力を尽くします。"
+         :about-like-title "好きなこと"
+         :about-like* "技術に好きなこといくつか下記に書きました"
          :about-dislike-title "things i dislike"
          :about-dislike "Here are some things I dislike"
          :work-history-title "履歴"
          :terminal-title "ターミナル"
-         :contact-title "Contact"
-         :not-found-title "Not found"
-         :not-found-subtitle "404, uh oh"
+         :contact-title "連絡"
+         :not-found-title "そのページが見つかりません"
+         :not-found-subtitle "おや？404"
          :missing  "訳がありません: [%1$s %2$s %3$s]|"}}
  :dev-mode? true ; Set to true for auto dictionary reloading
  :fallback-locale :en}
