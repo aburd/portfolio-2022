@@ -41,8 +41,7 @@
 (defn locale-select []
   (.querySelector js/document "form.form-locale select"))
 
-(defn handle-locale-change [ev]
-  (println ev)
+(defn handle-locale-change [_ev]
   (.submit (locale-form)))
 
 ; Start button
@@ -66,7 +65,7 @@
     (remove-class el "active")
     (add-class el "active")))
 
-(defn handle-start-click [ev]
+(defn handle-start-click [_ev]
   (toggle-active (start-menu)))
 
 (defn first-inactive-menu-item []
