@@ -69,8 +69,21 @@
 (defn handle-start-click [ev]
   (toggle-active (start-menu)))
 
+(defn first-inactive-menu-item []
+  (.querySelector js/document "nav.main-nav li:not(.active)"))
+
+(defn handle-window-keydown [ev]
+  (let [shift? (.-ctrlKey ev)
+        pressed-key (.-key ev)]
+    (when (and shift? (= pressed-key "k"))
+      (do
+        (.preventDefault ev)
+        (toggle-active (start-menu))
+        (.focus (first-inactive-menu-item))))))
+
 (defn bind-controls []
   (.addEventListener (start-btn) "click" handle-start-click)
+  (.addEventListener js/window "keydown" handle-window-keydown)
   (.addEventListener (theme-switch) "click" handle-theme-click) 
   (.addEventListener (locale-select) "change" handle-locale-change)) 
 
