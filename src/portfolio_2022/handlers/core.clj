@@ -28,7 +28,7 @@
     (views/default-page-view 
       req 
       pages/work-history
-      (util/work-experience (:locale req)))))
+      (reverse (util/work-experience (:locale req))))))
 
 (defn terminal
   [req] 

@@ -75,10 +75,9 @@
   (let [shift? (.-ctrlKey ev)
         pressed-key (.-key ev)]
     (when (and shift? (= pressed-key "k"))
-      (do
-        (.preventDefault ev)
-        (toggle-active (start-menu))
-        (.focus (first-inactive-menu-item))))))
+      (.preventDefault ev)
+      (toggle-active (start-menu))
+      (.focus (first-inactive-menu-item)))))
 
 (defn bind-controls []
   (.addEventListener (start-btn) "click" handle-start-click)

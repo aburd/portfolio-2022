@@ -41,6 +41,7 @@
    "webpack"
    "ruby on rails"
    "MySQL"
+   "redis"
    "GCP"
    "PHP"]
   :description
