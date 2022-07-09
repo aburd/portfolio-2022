@@ -2,14 +2,17 @@
   (:require ["xterm" :as xt]
             [cljs.core.async :refer [go]]
             [cljs.core.async.interop :refer-macros [<p!]]
-            [clojure.string :as s]))
+            [clojure.string :as s]
+            [goog.string :as gstring]
+            [goog.string.format]))
 
+(declare commands)
 (defonce terminal (atom nil))
 (defonce buffer (atom ""))
-(defonce history (atom {:cur-idx 0
+(defonce history (atom {:cur-idx -1
                         :prev-cmds []}))
 
-(def debug false)
+(def debug true)
 (defn info [& args]
   (when debug
     (apply println args)))
@@ -25,14 +28,6 @@
                             "theme" {"background" "#222"
                                      "cursor" "#eabfff"}}))
 
-(def help-message "
-This terminal has the following commands:
-- help: Displays this message
-- ls: Displays 'files'
-- open: 'Open' a 'file'
-- cat: Prints contents of 'file' to terminal
-")
-
 (def menu-options
   {"home" "/"
    "about" "/about"
@@ -45,15 +40,15 @@ This terminal has the following commands:
   (-> (.fetch js/window url)
       (.then #(.json %))))
 
-(defn term-ls [dir]
-  (let [term @terminal
+(some #{:key :ke} [:ke])
+
+(defn term-ls [& opts]
+  (let [long? (some #{"-l"} opts)
+        separator (if long? "\n" " ")
         files (->> menu-options
                    keys
-                   (s/join " "))]
-    (.write term (str "\r\n" files)))) 
-
-(defn term-help []
-  (.write @terminal (term-str help-message))) 
+                   (s/join separator))]
+    (.write @terminal (str "\r\n" (term-str files))))) 
 
 (defn term-open [file]
   (if-some [url (get menu-options file)]
@@ -61,6 +56,15 @@ This terminal has the following commands:
       (.write @terminal (str "\r\nOpening " file "..."))
       (set! (.. js/window -location -href) url))
     (.write @terminal (str "\r\n" "Can't open " file))))
+
+(defn help-message [] 
+  (let [msg (s/join 
+              "\n"
+              (map (fn [[cmd cmd-info]] (str "- " cmd ": " (:help cmd-info))) commands))]
+    (gstring/format "\nThis terminal has the following commands:\n%s\n" msg)))
+
+(defn term-help []
+  (.write @terminal (term-str (help-message)))) 
 
 (defn prompt []
   (.write @terminal (str "\r\n" prompt-text)))
@@ -73,23 +77,25 @@ This terminal has the following commands:
         (.write term (term-str (.stringify js/JSON body nil 2)))
         (prompt)))))
 
-(def commands {"ls" term-ls
-               "help" term-help
-               "open" term-open
-               "cat" term-cat})
+(def commands {"help" {:cmd term-help
+                       :help "Displays this message."}
+               "ls" {:cmd term-ls
+                     :help "Displays 'files'.\n\t-l: Long format"}
+               "cat" {:cmd term-cat
+                      :help "Prints contents of 'file' to terminal"}
+               "nav" {:cmd term-open
+                      :help "Navigate to that file (closes terminal)."}})
 
 (defn parse-cmd-text [text]
   (-> text
       (s/split #"\s")))
 
 (defn handle-submit []
-  (let [b @buffer
-        term @terminal
-        [cmd-s & args] (parse-cmd-text b)]
-    (if-some [cmd (get commands cmd-s)]
-      (apply cmd args)
-      (.write term (str "\r\n" cmd-s ": command not found")))
-    (reset! history {:cur-idx 0 :prev-cmds (vec (concat [@buffer] (:prev-cmds @history)))})
+  (let [[cmd-s & args] (parse-cmd-text @buffer)]
+    (if-some [cmd-info (get commands cmd-s)]
+      (apply (:cmd cmd-info) args)
+      (.write @terminal (str "\r\n" cmd-s ": command not found")))
+    (reset! history {:cur-idx -1 :prev-cmds (vec (concat [@buffer] (:prev-cmds @history)))})
     (reset! buffer "")))
 
 (vec (concat [] [:hey]))
@@ -110,15 +116,21 @@ This terminal has the following commands:
 (defn clear-term-line []
   (.write @terminal (apply str (repeat (count @buffer) "\b \b"))))
 
-(defn handle-up-key []
+(defn change-history [idx-fn]
   (let [{cur :cur-idx c :prev-cmds} @history]
-    (when-some [text (get c cur)] 
+    (when-some [text (get c (idx-fn cur))] 
       (clear-term-line)
       (.write @terminal text)
       (reset! buffer text)
-      (reset! history (merge @history {:cur-idx (inc cur)})))))
+      (reset! history (merge @history {:cur-idx (idx-fn cur)}))))
+  (info @history))
 
-(defn handle-down-key [])
+(defn handle-up-key []
+  (change-history inc))
+
+(defn handle-down-key []
+  (when (> (:cur-idx @history) 0)
+    (change-history dec)))
 
 (defn handle-key [e]
   (info e)
