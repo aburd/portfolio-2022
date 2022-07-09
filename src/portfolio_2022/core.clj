@@ -1,16 +1,16 @@
 (ns portfolio-2022.core
-  (:require [ring.adapter.jetty :as jetty]
-            [ring.middleware.resource :refer [wrap-resource]]
-            [ring.middleware.cookies :refer [wrap-cookies]]
-            [ring.middleware.params :refer [wrap-params]]
-            [ring.middleware.reload :refer [wrap-reload]]
-            [ring.middleware.refresh :refer [wrap-refresh]]
-            [ring.middleware.keyword-params :refer [wrap-keyword-params]]
-            [reitit.ring :refer [ring-handler router]]
-            [taoensso.tower.ring :refer [wrap-tower]] 
-            [clojure.pprint :refer [pprint]]
+  (:require [clojure.pprint :refer [pprint]] 
             [portfolio-2022.handlers.core :as handlers]
-            [portfolio-2022.util :refer [tower-config]])
+            [portfolio-2022.util :refer [tower-config]]
+            [reitit.ring :refer [ring-handler router]]
+            [ring.adapter.jetty :as jetty]
+            [ring.middleware.cookies :refer [wrap-cookies]]
+            [ring.middleware.keyword-params :refer [wrap-keyword-params]]
+            [ring.middleware.params :refer [wrap-params]]
+            [ring.middleware.refresh :refer [wrap-refresh]]
+            [ring.middleware.reload :refer [wrap-reload]]
+            [ring.middleware.resource :refer [wrap-resource]]
+            [taoensso.tower.ring :refer [wrap-tower]]) 
   (:gen-class))
 
 (defonce server (atom nil))
@@ -79,11 +79,42 @@
     (reset! server nil)))
 
 (defn reset-server [port]
-  (when-some [s @server]
-      (stop-server))
+  (when-some [_s @server]
+    (stop-server))
   (start-server port))
 
+(def usage
+  "Portfolio:
+  -p, --port 'PORT': The port you want the server to run on. Defaults to 3001.")
+
+(def flags {"-p" :port
+            "--port" :port})
+
+(defn flag-match [m pair]
+  (let [[flag value] pair
+        match (get flags flag)]
+    (if (some? match)
+      (assoc m match value)
+      m)))
+
+(defn args->map [args]
+  (->> args
+       (partition 2)
+       (reduce flag-match {})))
+
+(defn args->opts [args]
+  (args->map args))
+
+(defn check-args [args]
+  (when (not= 0 (mod (count args) 2))
+    (println usage)
+    (System/exit 0)))
+
 (defn -main
-  "Run the portfolio 2022 web server"
+  "Run the portfolio 2022 web server."
   [& args]
-  (start-server 3001))
+  (check-args args)
+  (let [opts (args->opts args)
+        port (Integer/parseInt (or (:port opts) "3001"))]
+    (println (format "Running server on port '%s'" port))
+    (start-server port)))
