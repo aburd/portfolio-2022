@@ -70,7 +70,7 @@ This terminal has the following commands:
     (when-some [url (get menu-options file)]
       (let [term @terminal
             body (<p! (fetch-page (str "/api" url)))]
-        (.write term (str body))
+        (.write term (term-str (.stringify js/JSON body nil 2)))
         (prompt)))))
 
 (def commands {"ls" term-ls
