@@ -1,4 +1,5 @@
-(ns portfolio-2022.fe.core)
+(ns portfolio-2022.fe.core
+  (:require [portfolio-2022.fe.term :refer [mount-term]]))
 
 ; theming code
 (defn css-root []
@@ -87,4 +88,5 @@
 
 (defn init []
   (set-theme (dark-theme))
-  (bind-controls))
+  (bind-controls)
+  (mount-term))

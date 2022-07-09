@@ -33,7 +33,7 @@
 (defn terminal
   [req] 
   (html-200 
-    (views/default-page-view req pages/terminal)))
+    (views/term-page-view req pages/terminal)))
 
 (defn contact 
   [req]

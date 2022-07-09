@@ -263,6 +263,12 @@ header {
   border: 1px solid var(--main-border-color);
 }
 
+/* Terminal */
+#terminal {
+  background-color: #222;
+  padding: 1rem;
+}
+
 /* Contact */
 .page-contact label {
   text-transform: capitalize;
