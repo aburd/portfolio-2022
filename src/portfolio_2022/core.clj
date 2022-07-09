@@ -1,38 +1,41 @@
 (ns portfolio-2022.core
-  (:require [ring.adapter.jetty :as jetty]
-            [ring.middleware.resource :refer [wrap-resource]]
-            [ring.middleware.cookies :refer [wrap-cookies]]
-            [ring.middleware.params :refer [wrap-params]]
-            [ring.middleware.reload :refer [wrap-reload]]
-            [ring.middleware.refresh :refer [wrap-refresh]]
-            [ring.middleware.keyword-params :refer [wrap-keyword-params]]
+  (:require [clojure.pprint :refer [pprint]] 
+            [portfolio-2022.handlers.html :as html-handlers]
+            [portfolio-2022.handlers.json :as json-handlers]
+            [portfolio-2022.util :refer [tower-config]]
             [reitit.ring :refer [ring-handler router]]
-            [taoensso.tower.ring :refer [wrap-tower]] 
-            [clojure.pprint :refer [pprint]]
-            [portfolio-2022.handlers.core :as handlers]
-            [portfolio-2022.util :refer [tower-config]])
+            [ring.adapter.jetty :as jetty]
+            [ring.middleware.cookies :refer [wrap-cookies]]
+            [ring.middleware.keyword-params :refer [wrap-keyword-params]]
+            [ring.middleware.params :refer [wrap-params]]
+            [ring.middleware.refresh :refer [wrap-refresh]]
+            [ring.middleware.reload :refer [wrap-reload]]
+            [ring.middleware.resource :refer [wrap-resource]]
+            [taoensso.tower.ring :refer [wrap-tower]]) 
   (:gen-class))
 
 (defonce server (atom nil))
-
 
 (def routes
   (some-fn
     (ring-handler
       (router 
         [
-         ["/" {:get {:handler handlers/home}}]
-         ["/about" {:get {:handler handlers/about}}]
-         ["/works" {:get {:handler handlers/work-history}}]
-         ["/terminal" {:get {:handler handlers/terminal}}]
-         ["/contact" {:get {:handler handlers/contact}}]
-         ["/locale" {:post {:handler handlers/change-locale}}]
+         ["/" {:get {:handler html-handlers/home}}]
+         ["/about" {:get {:handler html-handlers/about}}]
+         ["/works" {:get {:handler html-handlers/work-history}}]
+         ["/terminal" {:get {:handler html-handlers/terminal}}]
+         ["/locale" {:post {:handler html-handlers/change-locale}}]
          ["/echo"
            {:get {:handler (fn [req] 
                              {:status 200
                               :headers {"Content-Type" "text/plain"}
-                              :body (with-out-str (pprint req))})}}]]))
-    (constantly handlers/not-found)))
+                              :body (with-out-str (pprint req))})}}]
+         ["/api" {}
+          ["/" {:get {:handler json-handlers/home}}]
+          ["/about" {:get {:handler json-handlers/about}}]
+          ["/works" {:get {:handler json-handlers/work-history}}]]]))
+    (constantly html-handlers/not-found)))
 
 (defn wrap-cookie-settings [handler]
   (fn [req]
@@ -79,11 +82,42 @@
     (reset! server nil)))
 
 (defn reset-server [port]
-  (when-some [s @server]
-      (stop-server))
+  (when-some [_s @server]
+    (stop-server))
   (start-server port))
 
+(def usage
+  "Portfolio usage:
+  -p, --port 'PORT': The port you want the server to run on. Defaults to 3001.")
+
+(def flags {"-p" :port
+            "--port" :port})
+
+(defn flag-match [m pair]
+  (let [[flag value] pair
+        match (get flags flag)]
+    (if (some? match)
+      (assoc m match value)
+      m)))
+
+(defn args->map [args]
+  (->> args
+       (partition 2)
+       (reduce flag-match {})))
+
+(defn args->opts [args]
+  (args->map args))
+
+(defn check-args [args]
+  (when (not= 0 (mod (count args) 2))
+    (println usage)
+    (System/exit 0)))
+
 (defn -main
-  "Run the portfolio 2022 web server"
+  "Run the portfolio 2022 web server."
   [& args]
-  (start-server 3001))
+  (check-args args)
+  (let [opts (args->opts args)
+        port (Integer/parseInt (or (:port opts) "3001"))]
+    (println (format "Running server on port '%s'" port))
+    (start-server port)))

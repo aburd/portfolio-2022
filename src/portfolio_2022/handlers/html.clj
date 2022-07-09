@@ -1,4 +1,4 @@
-(ns portfolio-2022.handlers.core
+(ns portfolio-2022.handlers.html
   (:require 
     [portfolio-2022.util :as util]
     [portfolio-2022.views.core :as views]
@@ -6,7 +6,7 @@
     [ring.util.response :refer [redirect]]))
 
 (defn html-200 
-  "Returns a function which will return a valid html ring response."
+  "Returns a html ring response."
   [body]
   {:status 200
    :headers {"Content-Type" "text/html; charset=UTF-8"}
@@ -33,7 +33,7 @@
 (defn terminal
   [req] 
   (html-200 
-    (views/default-page-view req pages/terminal)))
+    (views/term-page-view req pages/terminal)))
 
 (defn contact 
   [req]

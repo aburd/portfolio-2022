@@ -22,3 +22,9 @@
 
 (defn work-experience [locale]
   (edn/read-string (slurp (work-experience-path locale))))
+
+(def menu-options
+  [{:url "/" :name "home"}
+   {:url "/about" :name "about"}
+   {:url "/works" :name "works"}
+   {:url "/terminal" :name "terminal"}])

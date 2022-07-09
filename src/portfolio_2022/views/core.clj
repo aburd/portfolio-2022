@@ -2,6 +2,7 @@
   (:require 
     [clojure.string :as s]
     [hiccup.core :refer [html]]
+    [portfolio-2022.util :as u]
     [portfolio-2022.views.components :as c]))
 
 (defn html-view-wrap [inner-html]
@@ -9,6 +10,15 @@
          [:head
           [:meta {:name "viewport" :content "width: device-width, initial-scale: 1.0"}]]
          [:link {:rel "stylesheet" :href "/styles.css"}] 
+         [:body inner-html]
+         [:script {:src "/js/main.js"}]]))
+
+(defn term-view-wrap [inner-html]
+  (html [:html
+         [:head
+          [:meta {:name "viewport" :content "width: device-width, initial-scale: 1.0"}]]
+         [:link {:rel "stylesheet" :href "/styles.css"}] 
+         [:link {:rel "stylesheet" :href "/xterm.css"}] 
          [:body inner-html]
          [:script {:src "/js/main.js"}]]))
 
@@ -61,19 +71,25 @@
     [:li
       (locale-form req)]]])
 
+(defn nav-options [req]
+  (let [t (:t req)
+        locale (:locale req)]
+    (map 
+      #(merge % {:active (nav-option-active % req)} {:text (t locale (str "ui/nav/" (:name %)))}) 
+      u/menu-options)))
+
+(defn default-layout [main-hiccup req & args]
+  [:div {:class "container"}
+   [:header 
+    [:div {:class "container-nav"} (nav (nav-options req))]
+    [:div {:class "container-social"} (social req)]]
+   [:main (apply main-hiccup req args)]
+   [:footer]])
+
 (defn default-page-view 
   [req main-hiccup & args]
-  (let [t (:t req)
-        locale (:locale req)
-        nav-options (map 
-                      #(merge % {:active (nav-option-active % req)}) 
-                      [{:url (str "/") :text (t locale :ui/nav/home)}
-                       {:url (str "/" "about") :text (t locale :ui/nav/about)}
-                       {:url (str "/" "works") :text (t locale :ui/nav/works)}
-                       {:url (str "/" "terminal") :text (t locale :ui/nav/terminal)}
-                       {:url (str "/" "contact") :text (t locale :ui/nav/contact)}])]
-    (html-view-wrap [:div {:class "container"}
-                     [:header [:div {:class "container-nav"} (nav nav-options)]
-                              [:div {:class "container-social"} (social req)]]
-                     [:main (apply main-hiccup req args)]
-                     [:footer]])))
+  (html-view-wrap (apply default-layout main-hiccup req args)))
+
+(defn term-page-view 
+  [req main-hiccup & args]
+  (term-view-wrap (apply default-layout main-hiccup req args)))

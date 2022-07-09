@@ -59,7 +59,8 @@
 (defn terminal [req] 
   (let [locale (:locale req)]
     [:div {:class "page-terminal"} 
-     [:h1 {:class "page-tag-line"} (t locale :terminal-title)]]))
+     [:h1 {:class "page-tag-line"} (t locale :terminal-title)]
+     [:div {:id "terminal"}]]))
 
 (defn contact [req] 
   (let [{locale :locale} req]

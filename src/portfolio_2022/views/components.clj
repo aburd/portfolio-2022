@@ -4,7 +4,7 @@
 
 (defn form-group [group-name el]
   [:dev {:class "form-group"}
-   [:label {:for name} group-name]
+   [:label {:for group-name} group-name]
    [:div {:class "form-element"} el]])
 
 (defn switch
