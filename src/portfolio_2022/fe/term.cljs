@@ -1,9 +1,18 @@
 (ns portfolio-2022.fe.term
   (:require ["xterm" :as xt]
+            [cljs.core.async :refer [go]]
+            [cljs.core.async.interop :refer-macros [<p!]]
             [clojure.string :as s]))
 
 (defonce terminal (atom nil))
 (defonce buffer (atom ""))
+(defonce history (atom {:cur-idx 0
+                        :prev-cmds []}))
+
+(def debug false)
+(defn info [& args]
+  (when debug
+    (apply println args)))
 
 (defn query-selector 
   "Allias for document.querySelector."
@@ -27,11 +36,14 @@ This terminal has the following commands:
 (def menu-options
   {"home" "/"
    "about" "/about"
-   "works" "/works"
-   "terminal" "/terminal"})
+   "works" "/works"})
 
 (defn term-str [text]
   (s/replace text "\n" "\r\n"))
+
+(defn fetch-page [url]
+  (-> (.fetch js/window url)
+      (.then #(.json %))))
 
 (defn term-ls [dir]
   (let [term @terminal
@@ -50,8 +62,16 @@ This terminal has the following commands:
       (set! (.. js/window -location -href) url))
     (.write @terminal (str "\r\n" "Can't open " file))))
 
-(defn term-cat [dir]
-  (println "cat"))
+(defn prompt []
+  (.write @terminal (str "\r\n" prompt-text)))
+
+(defn term-cat [file]
+  (go
+    (when-some [url (get menu-options file)]
+      (let [term @terminal
+            body (<p! (fetch-page (str "/api" url)))]
+        (.write term (str body))
+        (prompt)))))
 
 (def commands {"ls" term-ls
                "help" term-help
@@ -62,9 +82,6 @@ This terminal has the following commands:
   (-> text
       (s/split #"\s")))
 
-(defn prompt []
-  (.write @terminal (str "\r\n" prompt-text)))
-
 (defn handle-submit []
   (let [b @buffer
         term @terminal
@@ -72,7 +89,10 @@ This terminal has the following commands:
     (if-some [cmd (get commands cmd-s)]
       (apply cmd args)
       (.write term (str "\r\n" cmd-s ": command not found")))
+    (reset! history {:cur-idx 0 :prev-cmds (vec (concat [@buffer] (:prev-cmds @history)))})
     (reset! buffer "")))
+
+(vec (concat [] [:hey]))
 
 (defn handle-enter []
   (handle-submit)
@@ -87,19 +107,32 @@ This terminal has the following commands:
 (defn handle-ctrl-l []
   (.clear @terminal))
 
+(defn clear-term-line []
+  (.write @terminal (apply str (repeat (count @buffer) "\b \b"))))
+
+(defn handle-up-key []
+  (let [{cur :cur-idx c :prev-cmds} @history]
+    (when-some [text (get c cur)] 
+      (clear-term-line)
+      (.write @terminal text)
+      (reset! buffer text)
+      (reset! history (merge @history {:cur-idx (inc cur)})))))
+
+(defn handle-down-key [])
+
 (defn handle-key [e]
-  (.log js/console e)
+  (info e)
   (let [term @terminal
         c (.-key e)]
     (condp = c
       "\u007f" (handle-backspace)
       "\r" (handle-enter)
       "\u000c" (handle-ctrl-l)
+      "\u001b[A" (handle-up-key)
+      "\u001b[B" (handle-down-key)
       (do 
         (reset! buffer (str @buffer c))
         (.write term c)))))
-
-    
 
 (defn set-handlers []
   (let [term @terminal]
@@ -107,7 +140,7 @@ This terminal has the following commands:
 
 (defn mount-term []
   (when (some? term-el)
-    (println "Terminal DOM element found. Mounting...")
+    (info "Terminal DOM element found. Mounting...")
     (reset! terminal (xt/Terminal. term-options))
     (.open @terminal term-el)
     (term-help)

@@ -1,6 +1,7 @@
 (ns portfolio-2022.core
   (:require [clojure.pprint :refer [pprint]] 
-            [portfolio-2022.handlers.core :as handlers]
+            [portfolio-2022.handlers.html :as html-handlers]
+            [portfolio-2022.handlers.json :as json-handlers]
             [portfolio-2022.util :refer [tower-config]]
             [reitit.ring :refer [ring-handler router]]
             [ring.adapter.jetty :as jetty]
@@ -20,17 +21,21 @@
     (ring-handler
       (router 
         [
-         ["/" {:get {:handler handlers/home}}]
-         ["/about" {:get {:handler handlers/about}}]
-         ["/works" {:get {:handler handlers/work-history}}]
-         ["/terminal" {:get {:handler handlers/terminal}}]
-         ["/locale" {:post {:handler handlers/change-locale}}]
+         ["/" {:get {:handler html-handlers/home}}]
+         ["/about" {:get {:handler html-handlers/about}}]
+         ["/works" {:get {:handler html-handlers/work-history}}]
+         ["/terminal" {:get {:handler html-handlers/terminal}}]
+         ["/locale" {:post {:handler html-handlers/change-locale}}]
          ["/echo"
            {:get {:handler (fn [req] 
                              {:status 200
                               :headers {"Content-Type" "text/plain"}
-                              :body (with-out-str (pprint req))})}}]]))
-    (constantly handlers/not-found)))
+                              :body (with-out-str (pprint req))})}}]
+         ["/api" {}
+          ["/" {:get {:handler json-handlers/home}}]
+          ["/about" {:get {:handler json-handlers/about}}]
+          ["/works" {:get {:handler json-handlers/work-history}}]]]))
+    (constantly html-handlers/not-found)))
 
 (defn wrap-cookie-settings [handler]
   (fn [req]
