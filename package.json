@@ -5,7 +5,9 @@
   "devDependencies": {
     "shadow-cljs": "2.19.5"
   },
-  "dependencies": {},
+  "dependencies": {
+    "xterm": "^4.19.0"
+  },
   "scripts": {
     "dev": "npx shadow-cljs watch frontend -v",
     "build": "npx shadow-cljs compile frontend -v"
