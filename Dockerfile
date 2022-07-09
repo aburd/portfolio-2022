@@ -6,3 +6,4 @@ RUN lein deps
 COPY . /usr/src/app
 RUN mv "$(lein uberjar | sed -n 's/^Created \(.*standalone\.jar\)/\1/p')" app-standalone.jar
 CMD ["lein", "run"]
+EXPOSE 3001

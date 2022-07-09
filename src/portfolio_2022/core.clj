@@ -84,7 +84,7 @@
   (start-server port))
 
 (def usage
-  "Portfolio:
+  "Portfolio usage:
   -p, --port 'PORT': The port you want the server to run on. Defaults to 3001.")
 
 (def flags {"-p" :port
