@@ -15,11 +15,11 @@
   (let [locale (:locale req)]
     [:div {:class "page-about"} 
      [:h1 (t locale :ui/nav/about)]
-     [:h3 (t locale :about-website-title)]
+     [:h3 {:class "left"} (t locale :about-website-title)]
      [:p {:class "page-body-text"} (t locale :about-website)]
-     [:h3 (t locale :about-want-title)]
+     [:h3 {:class "left"} (t locale :about-want-title)]
      [:p {:class "page-body-text"} (t locale :about-want)]
-     [:h3 (t locale :about-like-title)]
+     [:h3 {:class "left"} (t locale :about-like-title)]
      [:p {:class "page-body-text"} (t locale :about-like)]
      [:ul
       [:li "Static Types"]
@@ -41,7 +41,7 @@
       [:li "Robust programs"]
       [:li [:a {:href "https://en.wikipedia.org/wiki/Unix_philosophy"} "Unix Philosophy"]]
       [:li "Code that serves human-beings"]]
-     [:h3 (t locale :about-dislike-title)]
+     [:h3 {:class "left"} (t locale :about-dislike-title)]
      [:p {:class "page-body-text"} (t locale :about-dislike)]
      [:ul
       [:li "Large amounts of state in programs"]
