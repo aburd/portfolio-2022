@@ -197,9 +197,7 @@ main {
 footer {
   grid-area: footer;
 }
-
-header {
-  display: grid;
+header { display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 1fr;
   grid-template-areas: "nav social";
@@ -273,6 +271,11 @@ header {
 #terminal {
   background-color: #222;
   padding: 1rem;
+}
+@media only screen and (max-width: 450px) {
+  #terminal {
+    width: 320px;
+  }
 }
 
 /* Contact */

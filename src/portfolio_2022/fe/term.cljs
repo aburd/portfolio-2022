@@ -1,5 +1,6 @@
 (ns portfolio-2022.fe.term
   (:require ["xterm" :as xt]
+            ["xterm-addon-fit" :refer [FitAddon]]
             [cljs.core.async :refer [go]]
             [cljs.core.async.interop :refer-macros [<p!]]
             [clojure.string :as s]
@@ -8,6 +9,7 @@
 
 (declare commands)
 (defonce terminal (atom nil))
+(defonce terminal-fit-addon (atom (FitAddon.)))
 (defonce buffer (atom ""))
 (defonce history (atom {:cur-idx -1
                         :prev-cmds []}))
@@ -154,7 +156,9 @@
   (when (some? term-el)
     (info "Terminal DOM element found. Mounting...")
     (reset! terminal (xt/Terminal. term-options))
+    (.loadAddon @terminal @terminal-fit-addon)
     (.open @terminal term-el)
+    (.fit @terminal-fit-addon)
     (term-help)
     (.focus @terminal)
     (prompt)
