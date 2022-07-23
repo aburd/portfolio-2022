@@ -12,7 +12,6 @@
    "--secondary-color" "#3c005a"
    "--github-icon-url" "url(\"/github_light.png\")"
    "--email-icon-url" "url(\"/email_light.png\")"})
-   
 
 (defn dark-theme []
   {"--main-bg-color" "#333"
@@ -22,7 +21,22 @@
    "--github-icon-url" "url(\"/github_dark.png\")"
    "--email-icon-url" "url(\"/email_dark.png\")"})
 
-(defn set-theme [theme]
+
+(defn browser-theme-setting []
+  (if (and (.-matches (.matchMedia js/window "(prefers-color-scheme: dark)")))
+    "dark"
+    "light"))
+
+(defn theme []
+  (let [theme-from-storage (.. js/window -localStorage (getItem "theme"))]
+    (if (some? theme-from-storage)
+      theme-from-storage
+      (browser-theme-setting))))
+
+(defn store-theme [theme]
+  (.. js/window -localStorage (setItem "theme" theme)))
+
+(defn set-theme-css [theme]
   (let [root (css-root)]
     (doseq [[prop-name prop-val] theme]
       (.. root -style (setProperty prop-name prop-val)))))
@@ -30,10 +44,20 @@
 (defn theme-switch []
   (.querySelector js/document ".container-themes .switch"))
 
+(defn theme-input []
+  (.querySelector js/document ".container-themes [name='theme']"))
+
+(defn set-theme [theme]
+  (condp = theme
+    "dark" (do (set-theme-css (dark-theme))
+               (store-theme "dark"))
+    "light" (do (set-theme-css (light-theme))
+               (store-theme "light"))))
+
 (defn handle-theme-click [ev]
   (if (.. ev -target -checked)
-    (set-theme (dark-theme))
-    (set-theme (light-theme))))
+    (set-theme "dark")
+    (set-theme "light")))
 
 ; locale code
 (defn locale-form []
@@ -86,7 +110,14 @@
   (.addEventListener (theme-switch) "click" handle-theme-click) 
   (.addEventListener (locale-select) "change" handle-locale-change)) 
 
-(defn init []
-  (set-theme (dark-theme))
+  
+(defn bootstrap []
   (bind-controls)
+  (when (= (theme) nil)
+    (store-theme (theme))))
+
+(defn init []
+  (bootstrap)
+  (set-theme (theme))
+  (set! (.-checked (theme-input)) (= (theme) "dark"))
   (mount-term))
