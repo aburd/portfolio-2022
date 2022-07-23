@@ -96,13 +96,15 @@ form {
 .social-icons .icon {
   height: 2rem;
   width: 2rem;
-  background-size: 100%;
+  background-size: 100% 100%;
 }
 .icon.github-icon {
   background-image: var(--github-icon-url);
 }
 .icon.email-icon {
   background-image: var(--email-icon-url);
+  height: 1.7rem;
+  width: 2rem;
 }
 
 .main-nav ul,
