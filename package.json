@@ -11,6 +11,7 @@
   },
   "scripts": {
     "dev": "npx shadow-cljs watch frontend -v",
-    "build": "npx shadow-cljs compile frontend -v"
+    "build": "npx shadow-cljs compile frontend -v",
+    "docker": "docker run -d -p 80:3001 portfolio"
   }
 }
