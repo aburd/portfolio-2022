@@ -47,3 +47,4 @@ js/
 *.log
 
 .clj-kondo
+.lsp
