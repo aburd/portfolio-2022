@@ -1,87 +1,89 @@
 {:dictionary ; Map or named resource containing map
-   {:en   {:example {:foo         ":en :example/foo text"
-                     :foo_comment "Hello translator, please do x"
-                     :bar {:baz ":en :example.bar/baz text"}
-                     :greeting "Hello %s, how are you?"
-                     :inline-markdown "<tag>**strong**</tag>"
-                     :block-markdown* "<tag>**strong**</tag>"
-                     :with-exclaim!   "<tag>**strong**</tag>"
-                     :with-arguments  "Num %d = %s"
-                     :greeting-alias :example/greeting
-                     :baz-alias      :example.bar/baz}
-           :ui {:submit "submit"
-                :nav {:home "home"
-                      :about "about"
-                      :works "work history"
-                      :terminal "terminal"
-                      :contact "contact"}
-                :name "name"
-                :email "e-mail"
-                :comments "comments"
-                :work-period "work period"
-                :employment "employment"}
-           :greeting "Ahoyhoy!"
-           :my-name "Aaron Burdick"
-           :work-title "software engineer" 
-           :about-me* "I've worked extensively on developing websites and webapps through with various tools and patterns. I've worked with static sites, Wordpress, MVC style frameworks (Ruby on Rails, etc.), and SPAs/SSR apps which consume REST APIs or gRPC web. In addition, I've worked on native-apps using Electron as well.    
-                     
-Currently, I am employed at Zeals Co. Ltd where I've worked as a frontend engineer, full-stack engineer, tech-lead and now a VP. Although I recognize the importance of management, I would say I'm an engineer at heart. I like making things, especially things which users (at every level of the stack) love.
-                      
-I'm currently working on [hangzone](https://github.com/hangforever), an app that allows people to meet others in public places around Tokyo."
-           :about-website-title "this website"
-           :about-website* "If you're reading this website, hopefully you can learn a bit about me and perhaps we can work together on something! 
+ {:en   
+  {:example 
+   {:foo         ":en :example/foo text"
+    :foo_comment "Hello translator, please do x"
+    :bar {:baz ":en :example.bar/baz text"}
+    :greeting "Hello %s, how are you?"
+    :inline-markdown "<tag>**strong**</tag>"
+    :block-markdown* "<tag>**strong**</tag>"
+    :with-exclaim!   "<tag>**strong**</tag>"
+    :with-arguments  "Num %d = %s"
+    :greeting-alias :example/greeting
+    :baz-alias      :example.bar/baz}
+   :ui 
+   {:submit "submit"
+    :nav {:home "home"
+          :about "about"
+          :works "work history"
+          :terminal "terminal"
+          :contact "contact"}
+    :name "name"
+    :email "e-mail"
+    :comments "comments"
+    :work-period "work period"
+    :employment "employment"}
+   :greeting "Ahoyhoy!"
+   :my-name "Aaron Burdick"
+   :work-title "software engineer"
+   :about-me* "I've worked extensively on developing websites and webapps through with various tools and patterns.
+ 
+Currently, I am employed at Toyokumo where I am working on [kMailer](https://www.kintoneapp.com/en/kmailer).
+I am the organizer of the [Clojure Tokyo meetup group](https://www.meetup.com/clojure-tokyo/). I also run a [movie meetup](https://tokyomovie.group/) with some friends."
+   :about-website-title "this website"
+   :about-website* "If you're reading this website, hopefully you can learn a bit about me and perhaps we can work together on something! 
                            
 This particular website is meant to be as light and compatible with your device as is possible. Hopefully you can see this website even when your connection may not be good, or are viewing this on a screen-reader."
-           :about-want-title "what i want to work on"
-           :about-want* "I would like to work on something involved in making the world a better place. Especially anything regarding climate change, like renewable energy, etc. I always wanted to do something involving solar-panels.
+   :about-want-title "what i want to work on"
+   :about-want* "I would like to work on something involved in making the world a better place. Especially anything regarding climate change, like renewable energy, etc. I always wanted to do something involving solar-panels.
                        
 Technologically speaking, I've no hard preferences. Web, mobile, native, heck even embedded would be interesting. As long as it helps people and makes a difference, then I will give it my all."
-           :about-like-title "things i enjoy"
-           :about-like "Here are some things I enjoy"
-           :about-dislike-title "things i dislike"
-           :about-dislike "Here are some things I dislike"
-           :work-history-title "Work History"
-           :terminal-title "A Cool Terminal"
-           :contact-title "Contact"
-           :not-found-title "Not found"
-           :not-found-subtitle "404, uh oh"
-           :missing  "|Missing translation: [%1$s %2$s %3$s]|"}
-    :ja {:ui {:submit "送信"
-              :nav {:home "ホーム"
-                    :about "これは？"
-                    :works "履歴"
-                    :terminal "ターミナル"
-                    :contact "連絡"}
-              :name "名前"
-              :email "メールアドレス"
-              :comments "コメント"
-              :work-period "雇用期間"
-              :employment "雇用形態"}
-         :greeting "こんにちは！"
-         :my-name "バーディクアーロン"
-         :work-title "ソフトウェアエンジニア"
-         :about-me* "私はさまざまなツールやパターンを使用してWebサイトやWebアプリの開発に幅広く取り組んできました。私は静的サイト、Wordpress、MVCスタイルのフレームワーク（Ruby on Railsなど）、およびRESTAPIまたはgRPCWebを使用するSPA/SSRアプリを使用してきました。さらに、Electronを使用したネイティブアプリにも取り組んできました。
+   :about-like-title "things i enjoy"
+   :about-like "Here are some things I enjoy"
+   :about-dislike-title "things i dislike"
+   :about-dislike "Here are some things I dislike"
+   :work-history-title "Work History"
+   :terminal-title "A Cool Terminal"
+   :contact-title "Contact"
+   :not-found-title "Not found"
+   :not-found-subtitle "404, uh oh"
+   :missing  "|Missing translation: [%1$s %2$s %3$s]|"}
+  :ja 
+  {:ui {:submit "送信"
+        :nav {:home "ホーム"
+              :about "これは？"
+              :works "履歴"
+              :terminal "ターミナル"
+              :contact "連絡"}
+        :name "名前"
+        :email "メールアドレス"
+        :comments "コメント"
+        :work-period "雇用期間"
+        :employment "雇用形態"}
+   :greeting "こんにちは！"
+   :my-name "バーディクアーロン"
+   :work-title "ソフトウェアエンジニア"
+   :about-me* "私はさまざまなツールやパターンを使用してWebサイトやWebアプリの開発に幅広く取り組んできました。
 
-現在、私はZeals Co. Ltdに勤務しており、フロントエンドエンジニア、フルスタックエンジニア、技術リーダー、そして現在はVPとして働いています。私は経営の重要性を認識していますが、私は本質的にエンジニアだと思います。私は物を作るのが好きです。特に、ユーザー（スタックのすべてのレベル）が好きなものを作るのが好きです。
-
-現在、東京の公共の場所で人と出会えるアプリ[hangzone](https://www.github.com/hangforever)に取り組んでいます。"
-         :about-website-title "このウェブサイト"
-         :about-website* "このウェブサイトを読んでいるなら、うまくいけば、私について少し学ぶことができ、おそらく私たちは一緒に何かに取り組むことができます！
+現在私はト゚ヨクモで努めていて主に[kMailer](https://www.kintoneapp.com/en/kmailer)を開発しています。
+私は[Clojure Tokyoグループ](https://www.meetup.com/clojure-tokyo/)のオーカガイザーで、友達と[東京映画グループ](https://tokyomovie.group/) もオーガナイザーです。"
+   :about-website-title "このウェブサイト"
+   :about-website* "このウェブサイトを読んでいるなら、うまくいけば、私について少し学ぶことができ、おそらく私たちは一緒に何かに取り組むことができます！
 
 特にこのウェブサイトは、可能な限り軽量でデバイスとの互換性を保つことを目的としています。 接続が良好でない場合や、スクリーンリーダーでこれを表示している場合でも、このWebサイトを表示できることを願っています。"
-         :about-want-title "取り組みたいこと"
-         :about-want* "世界をより良い場所にするために何か取り組んでいきたいと思います。 特に、再生可能エネルギーなど、気候変動に関することなら何でも。私はいつもソーラーパネルを使った何かをしたいと思っていました。
+   :about-want-title "取り組みたいこと"
+   :about-want* "世界をより良い場所にするために何か取り組んでいきたいと思います。 特に、再生可能エネルギーなど、気候変動に関することなら何でも。私はいつもソーラーパネルを使った何かをしたいと思っていました。
 
 技術的に言えば、私は難しい好みはありません。 Web、モバイル、ネイティブ、組み込みさえも興味深いでしょう。 それが人々を助け、違いを生む限り、私はそれに全力を尽くします。"
-         :about-like-title "好きなこと"
-         :about-like* "技術に好きなこといくつか下記に書きました"
-         :about-dislike-title "things i dislike"
-         :about-dislike "Here are some things I dislike"
-         :work-history-title "履歴"
-         :terminal-title "ターミナル"
-         :contact-title "連絡"
-         :not-found-title "そのページが見つかりません"
-         :not-found-subtitle "おや？404"
-         :missing  "訳がありません: [%1$s %2$s %3$s]|"}}
+   :about-like-title "好きなこと"
+   :about-like* "技術に好きなこといくつか下記に書きました"
+   :about-dislike-title "things i dislike"
+   :about-dislike "Here are some things I dislike"
+   :work-history-title "履歴"
+   :terminal-title "ターミナル"
+   :contact-title "連絡"
+   :not-found-title "そのページが見つかりません"
+   :not-found-subtitle "おや？404"
+   :missing  "訳がありません: [%1$s %2$s %3$s]|"}}
  :dev-mode? true ; Set to true for auto dictionary reloading
  :fallback-locale :en}

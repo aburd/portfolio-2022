@@ -28,7 +28,7 @@
 We do not maintain this site anymore, but it looks like they're still using it."}
  {:company-name "ZEALS株式会社"
   :date-start "2017-07"
-  :date-end nil,
+  :date-end "2022-10",
   :employment-type "Full-Time"
   :tags
   ["HTML"
@@ -50,4 +50,83 @@ We do not maintain this site anymore, but it looks like they're still using it."
   
 I also worked another internal tool in electron which gave our business team various internal functions that were needed.
   
-Another critical piece of our infrastructure that I created from scratch was our browser automation tool. We needed something that could that could automate operating web pages for various tasks that would be controlled programatically. I wrote the browser automation server in node.js where it used redis as a queue mechanism. The configurations for it are created by internal members through a screen that was made in React."}]
+Another critical piece of our infrastructure that I created from scratch was our browser automation tool. We needed something that could that could automate operating web pages for various tasks that would be controlled programatically. I wrote the browser automation server in node.js where it used redis as a queue mechanism. The configurations for it are created by internal members through a screen that was made in React."}
+ {:company-name "AXA Japan"
+  :date-start "2023-03"
+  :date-end "2024-03",
+  :employment-type "Full-Time"
+  :tags
+  ["clojure"
+   "typescript"
+   "Next.js"
+   "AWS"
+   "HTML"
+   "CSS"
+   "SaaS"
+   "kanban"
+   "react"
+   "jotai"
+   "node.js"
+   "Postgres"
+   "redis"]
+  :description
+  "AXA Japan is the Japan branch of AXA Insurance Company, the number 1 insurance company in the world. 
+  
+### Responsibilities:
+
+- Code and deliver new features and bug fixes for internal platform
+- Migrate legacy applications and APIs to modern languages and infrastructures.
+- Help to maintain React component design system, and other JavaScript libraries, used in all our internal and customer facing applications.
+- Work as engineer in cross functional project teams, with a focus of delivering on time and on quality.
+- Iterate on UI/UX with product owners and designers.
+- Work with product owners, testers, and ops to streamline delivery practices with a focus on agile practices.
+- Drive non-technical initiatives, such as standardizing application/API and documentation strategy.
+- Conduct code reviews.
+- Evolve and promote React/JS/TS best practices locally and globally in AXA.
+
+### Notable achievements:
+
+- Migrate a legacy Javascript Facebook "Flow-type" application to a TypeScript project.
+- Promote type-safe APIs, validation, and automation of API documentation through usage of Zod and OpenAPI tooling, reducing human error and improving collaboration.
+- Promote automation of end-to-end testing through Cypress, which became the organization's official tooling
+- Create a typescript library to interact with internal APIs to reduce code duplication and improve ease-of-use across the organization"}
+ {:company-name "Toyokumo"
+  :date-start "2024-04"
+  :date-end nil,
+  :employment-type "Full-Time"
+  :tags
+  ["clojure"
+   "typescript"
+   "Next.js"
+   "AWS"
+   "HTML"
+   "CSS"
+   "SaaS"
+   "kanban"
+   "react"
+   "jotai"
+   "node.js"
+   "Postgres"
+   "redis"]
+  :description
+  "Toyokumo is a cloud solutions for enterprises service company offering services such as “Safety Confirmation Service,” Cybozu kintone-linked service “Toyokumo kintoneApp,” and “Toyokumo Scheduler.
+
+### Responsibilities:
+
+- Code and deliver new features and bug fixes for kMailer application.
+- Deliver value to end-users as timely as possible
+- Create high-level software designs for new features.
+- Iterate on UI/UX with product owners and designers.
+- Maintain cloud-resources through AWS
+- Establish best-practices for feature development
+- Conduct code reviews.
+- Help to maintain React component design system
+- Promotion of team through various blog articles, interviews
+- Code and deliver new features and bug fixes for kMailer application.
+
+### Notable achievements:
+
+- Create an interactive editor for creating beautiful e-mails.
+- Create an editor for managing automated e-mail campaigns.
+- Refactor state-model of react application to speed up rendering by over 50%.
+- Increase test-coverage of frontend application by 40%."}]
